@@ -1,5 +1,5 @@
-website name : FlexU
-
+website name : GoFit
+website slogan:"Transform your body, transform your life - Join us today!"
 .env file will be deleted later on 
 
 Everyone needs to use same date and time format (if you are using it)
