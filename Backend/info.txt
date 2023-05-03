@@ -1,0 +1,12 @@
+website name : FlexU
+
+.env file will be deleted later on 
+
+Everyone needs to use same date and time format (if you are using it)
+Date: 3-5-2023 
+Time: 8:32:16
+To get this date and time-
+let {get_date,get_time}=require("./utils/date_time")
+and use it by invoking these functions they will return date and time in correct format
+const new_date=get_date();
+const new_time=get_time();
