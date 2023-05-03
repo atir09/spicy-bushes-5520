@@ -25,5 +25,5 @@ app.listen(process.env.port,async()=>{
     } catch (error) {
         console.log(error)
     }
-    console.log(`listning on port ${process.env.port}`)
+    console.log(`Listening on port ${process.env.port}`)
 })
