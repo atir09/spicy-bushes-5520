@@ -3,6 +3,8 @@ const {connection}=require("./config/mongo_DB")
 const {userRouter}=require("./routes/userRouter")
 const {classesRouter}=require("./routes/classesRouter")
 const {ordersRouter}=require("./routes/ordersRouter")
+const { dashboardRouter } = require("./routes/adminDashRouter");
+
 const cors = require('cors')
 require('dotenv').config()
 const app=express()
@@ -16,6 +18,7 @@ app.get("/",(req,res)=>{
 app.use("/user",userRouter);
 app.use("/class",classesRouter);
 app.use("/order",ordersRouter);
+app.use("/admin", dashboardRouter);
 
 
 app.listen(process.env.port,async()=>{
@@ -25,5 +28,5 @@ app.listen(process.env.port,async()=>{
     } catch (error) {
         console.log(error)
     }
-    console.log(`listning on port ${process.env.port}`)
+    console.log(`Listening on port ${process.env.port}`)
 })
