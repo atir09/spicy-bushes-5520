@@ -15,7 +15,7 @@ function get_time(){
     var time = hours+":"+mins+":"+sec;
     return time;
 }
-console.log(get_date(),get_time())
+
 module.exports={
     get_date,get_time
 }
