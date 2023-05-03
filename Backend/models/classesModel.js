@@ -12,8 +12,6 @@ const classesSchema = mongoose.Schema({
     image:String,
     trainerID:String,   
     trainerName:String,   
-    createdDate:String,
-    createdTime:String,
     classDate:String,
     classTime:String,             
     clients:[{type:String}]
