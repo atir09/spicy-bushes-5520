@@ -16,7 +16,7 @@ userRouter.get("/",(req,res)=>{
 // User - Get All Users
 userRouter.get("/all", async (req,res)=>{
     try{
-        let users = await UserModel.find();
+        let users = await UserModel.find({role:"client"});
         res.status(200).send({message:"User Data Fetched",users})
     }catch(error){
         res.status(400).send({message:"Something went wrong",error:error.message})

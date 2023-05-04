@@ -15,6 +15,15 @@ app.get("/",(req,res)=>{
     res.send("Base Endpoint Of API")
 })
 
+app.get("/alltrainer", async (req,res)=>{
+    try{
+        let trainers = await UserModel.find({role:"trainer"});
+        res.status(200).send({message:"User Data Fetched",trainers})
+    }catch(error){
+        res.status(400).send({message:"Something went wrong",error:error.message})
+        console.log(error)
+    }
+})
 app.use("/user",userRouter);
 app.use("/class",classesRouter);
 app.use("/order",ordersRouter);
