@@ -1,0 +1,166 @@
+
+ body { 
+    background-image: url("../imgs/Artboard-1.07f7761b.png"); 
+  
+
+  }
+
+#signup-heading {
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+    color: #FF004F;
+    
+   
+}
+
+#form{
+   width: 50%;
+   margin: auto;
+   margin-top: 30px;
+   height: 100vh;
+   padding-top: 0.5%;
+   padding-bottom: 5%;
+   font-family:cursive;
+   background-color: whitesmoke;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+#name, #pass, #top, #top2, #mid, #bottom{
+    display: flex;
+    gap: 80px;
+    font-size: large;
+    margin-left: 10%;
+    
+}
+
+
+#firstName, #lastName, #password1, #password2{
+    margin-top: 5%;
+    width: 125%;
+    height: 4vh;
+   border-radius: 20px;
+   padding-left: 10%;
+   letter-spacing: 1px;
+   border: 2px solid black;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#Email{
+    margin-top: 5%;
+    width: 175%;
+    height: 4vh;
+   border-radius: 20px;
+   letter-spacing: 2px;
+   padding-left: 10%;
+   border: 2px solid black;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#country{
+    margin-top: 5%;
+    width: 92%;
+    height: 5vh;
+   border-radius: 20px;
+   letter-spacing: 2px;
+   padding-left: 10%;
+   border: 2px solid black;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;    
+}
+#role, #gender{
+    margin-top: 5%;
+    width: 100%;
+    height: 4vh;
+   border-radius: 20px;
+   letter-spacing: 2px;
+   padding-left: 10%;
+   border: 2px solid black;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   cursor: pointer;
+} 
+
+
+#country1, #email{
+     width: 40%; 
+     margin-left: 10%;
+     margin-top: 1%;
+     font-size: large;
+     cursor: pointer;
+   
+}
+#select, #select2 {
+    font-size: large;
+    cursor: pointer;
+   
+}
+
+#sign-upButton {
+    padding: 1%;
+    width: 75%;
+    margin-left: 10%;
+    border: 2px solid black;
+    background-color: #FF004F;
+    color: rgb(0, 0, 0);
+    letter-spacing: 2px;
+    font-size: 15px;
+    font-weight: 50px;
+    height: 6vh;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#login {
+    padding:2%;
+    border: 2px solid black;
+    width: 70%;
+    height: 2vh;
+    margin-left: 10%;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1080px) {
+ #signup_img{
+    display: none;
+ }
+ #form{
+   width: max-content;
+   margin-right: 20%;
+ }
+#container1 #form input{
+    width: max-content;
+}
+#container1, #container2{
+    display: block;
+    width: max-content;
+    margin: auto;
+}
+#createClass select{
+    width: 98%;
+ }
+}
+
+@media screen and (max-width: 450px) {
+ #container{
+    width: max-content;
+    display: flex;
+    justify-content: center;
+ }
+ #container1,#container2 {
+    margin-top: 2%;
+    display: block;
+    width: 100%;
+ }
+ #container1 #form input,#container2 #form input{
+    width: 90%;
+}
+ #container1 #form, #container2 #form{
+    padding: 0px;
+    width: 100%;
+    margin: auto;
+ }
+ #createClass select{
+    width: max-content;
+ }
+}
+
