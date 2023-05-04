@@ -2,7 +2,7 @@ let baseURL="https://stormy-flannel-shirt-lion-cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if (!loggedInUser) {
-    window.location.assign("/frontend/pages/login.html");
+    window.location.assign("/Frontend/html/login.html");
 }
 let loggedInUserEmail = loggedInUser.email;
 // console.log(loggedInUser)
