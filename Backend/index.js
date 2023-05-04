@@ -21,6 +21,17 @@ app.use("/order",ordersRouter);
 app.use("/admin", dashboardRouter);
 
 
+/* *************************************google oauth*************************************** */
+
+
+
+app.get('/auth/google',passport.authenticate('google', { scope: ['profile','email'] }));
+
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' ,session:false}),function(req, res) {
+    res.redirect("www.google.com")
+  });
+
+
 app.listen(process.env.port,async()=>{
     try {
         await connection
