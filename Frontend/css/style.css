@@ -198,7 +198,7 @@ body {
   line-height: 1.5;
   color: #7e7e7e;
   text-align: left;
-  background-color: #ececdc; }
+  background-color: #000000; }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -27419,22 +27419,26 @@ table.dataTable thead .sorting {
   width: 145px;
   font-size: 20px;
   font-weight: 500;
+  /* background-color: white; */
   color: #000; }
 .event-calender .bootstrap-datetimepicker-widget table th {
   height: 20px;
   line-height: 20px;
   width: 20px;
   font-size: 14px;
+  /* background-color: white; */
   font-weight: 400; }
 .event-calender .bootstrap-datetimepicker-widget table td.day {
   height: 46px;
   line-height: 30px;
   width: 46px;
+  /* background-color: white; */
   color: #000;
   font-weight: 500; }
 .event-calender .bootstrap-datetimepicker-widget .picker-switch td i {
   line-height: 2.5;
   height: 2.5em;
+  /* background-color: white; */
   width: 100%;
   display: none; }
 .event-calender .datepicker table tr td.today {
@@ -27458,6 +27462,7 @@ table.dataTable thead .sorting {
   right: -5px;
   height: 17px;
   width: 17px;
+  
   background: #6CC51D;
   border-radius: 12px; }
 .event-calender .bootstrap-datetimepicker-widget table td, .event-calender .bootstrap-datetimepicker-widget table th {
@@ -27469,6 +27474,7 @@ table.dataTable thead .sorting {
   padding: 30px 10px; }
 .event-calender .bootstrap-datetimepicker-widget table td span.active,
 .event-calender .bootstrap-datetimepicker-widget table td i.active {
+  
   color: #000; }
 
 .date-icon {
@@ -30398,7 +30404,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
    }
    @media (min-width: 1200px) {
     .content-body{
-      width: 125%;
+      width: 123%;
       margin-left: 113px;
     }
    
