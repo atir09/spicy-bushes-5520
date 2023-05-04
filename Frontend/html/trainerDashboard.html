@@ -20,7 +20,7 @@
 
     <header class="header">
 
-        <a href="#" class="logo"> <span>RAPID</span>FIT </a>
+      <a href="#" class="logo"> <img src="../imgs/logo.png" alt="logo"></a>
 
         <div id="menu-btn" class="fas fa-bars"></div>
 
@@ -69,7 +69,7 @@
                     <div id="profimgdiv" >
                         <img src="https://media.istockphoto.com/id/1397556857/vector/avatar-13.jpg?s=612x612&w=0&k=20&c=n4kOY_OEVVIMkiCNOnFbCxM0yQBiKVea-ylQG62JErI=" alt="" id="profileimg">
                         <div id="clientnamediv">
-                            <p>Hi, Atir</p>
+                            <p id="userInfo">Hi,</p>
                             <p>Welcome back - Let's get Started! </p>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">0</div>
+                        <div class="numbers" id="total-class">0</div>
                         <div class="cardName">My classes</div>
                     </div>
                     <div>
@@ -90,12 +90,60 @@
 
         </div>
 
+    </section>
+
+
+
         <!-- ................................................List Classes ...........................................................-->
 
-        <div id="Classestitle">
-            <h2>Classes</h2>
-        </div>
+    <section>
+        <h1 class="heading"><span>Classes</span></h1>
+    </section>
 
+    <section class="class-list-section">
+
+<!-- Page wrapper/Container Section -->
+<div class="container">
+	<!-- Responsive Table Section -->
+	<table class="responsive-table">
+		<!-- Responsive Table Header Section -->
+		<thead class="responsive-table__head">
+			<tr class="responsive-table__row">
+				<th class="responsive-table__head__title responsive-table__head__title--name">Class Name
+				</th>
+				<th class="responsive-table__head__title responsive-table__head__title--price">Price</th>
+				<th class="responsive-table__head__title responsive-table__head__title--seats">Seats</th>
+				<th class="responsive-table__head__title responsive-table__head__title--date">Date/Time</th>
+				<th class="responsive-table__head__title responsive-table__head__title--venue">Venue</th>
+                <th class="responsive-table__head__title responsive-table__head__title--delete">Cancel</th>
+			</tr>
+		</thead>
+		<!-- Responsive Table Body Section -->
+		<tbody class="responsive-table__body">
+			<tr class="responsive-table__row">
+				<td class="responsive-table__body__text responsive-table__body__text--name">
+					
+				</td>
+				<td class="responsive-table__body__text responsive-table__body__text--price"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--seats"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--date"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--venue"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--delete"><button class="cancel-btn">Cancel</button></td>
+			</tr>
+			
+			<tr class="responsive-table__row">
+				<td class="responsive-table__body__text responsive-table__body__text--name">
+					<img src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="user-icon">
+				</td>
+				<td class="responsive-table__body__text responsive-table__body__text--price"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--seats"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--date"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--venue"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--delete"><button class="cancel-btn" >Cancel</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
     </section>
 
 

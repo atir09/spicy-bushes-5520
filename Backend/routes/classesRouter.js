@@ -33,6 +33,20 @@ classesRouter.get("/searchByUserID/:id", async (req,res)=>{
     }
 })
 
+
+
+// class - Get All classes by Trainer
+classesRouter.get("/searchByTrainerID/:id", async (req,res)=>{
+    let userID=req.params.id
+    try{
+        let classes = await ClassesModel.find({trainerID:userID});
+        res.status(200).send({message:"classes Data Fetched",classes})
+    }catch(error){
+        res.status(400).send({message:"Something went wrong",error:error.message})
+    }
+})
+
+
 // class - Single class Detail
 classesRouter.get("/:id", async (req,res)=>{
     let classesID= req.params.id;
