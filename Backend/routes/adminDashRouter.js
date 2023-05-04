@@ -52,19 +52,13 @@ dashboardRouter.get("/all", async (req, res) => {
     let orders = await OrdersModel.find();
     // let trainers = await TrainerModel.find();
     console.log(users, classes, orders)
-
-    // let trainersPending = trainers.filter((e) => {
-    //   return e.status === false;
-    // });
-    // let trainersApproved = trainers.filter((e) => {
-    //   return e.status === true;
-    // });
     
     res.send({
       msg: "Dashboard Done",
-    //   trainersPending: docPending,
-    //   trainersApproved: docApproved,
+      // trainersRegistered: trainers,
       usersRegistered: users,
+      classesRegistered: classes,
+      ordersCompleted: orders,
       totalUsers: users.length,
       totalClasses: classes.length,
       totalOrders: orders.length,
