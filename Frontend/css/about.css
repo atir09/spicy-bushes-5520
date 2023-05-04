@@ -5,9 +5,17 @@
    margin: auto;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    margin-top: 5%;
+    margin-top: 2%;
 
     
+}
+.mid-image-content{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .head-about{
     color:#ff004f;
@@ -26,9 +34,11 @@
 /* 2nd mid-section */
 .second-mid-head {
     text-align: center;
-
+    /* border: 2px solid white; */
     color: #ff004f;
     font-size: 60px;
+    width: max-content;
+    margin: auto;
 }
 
 .second-mid-images {
@@ -42,7 +52,7 @@
 
 .second-mid-img-section {
     width: 100%;
-
+    /* border: 2px solid white; */
 }
 
 .second-mid-img-section img {
@@ -106,7 +116,7 @@ p {
     color: white;
     font-size: 20px;
     cursor: pointer;
-    border: 2px solid white;
+    /* border: 2px solid white; */
 }
 
 .appointment:hover {
@@ -204,3 +214,40 @@ p {
     border: 2px solid #07080B;
     transition: all 0.3s ease;
 }
+
+
+  @media (max-width: 1090px) {
+      html {
+          font-size: 50%;
+        }
+    
+        .second-mid-images {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .mid-image{
+            grid-template-columns: repeat(1, 1fr); 
+        }
+    }
+    
+    @media (max-width: 750px) {   
+    .second-mid-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #about-us{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .second-mid-head{
+        font-size: 35px;
+    }
+      }
+
+      @media (max-width: 450px) {
+        html {
+          font-size: 50%;
+        }
+        
+    .second-mid-images {
+        grid-template-columns: repeat(1, 1fr);
+    }
+      }
