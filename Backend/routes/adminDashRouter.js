@@ -1,7 +1,9 @@
 const dashboardRouter = require("express").Router();
-const {AdminModel} = require("../models/adminModel")
-
-
+const {AdminModel} = require("../models/adminModel");
+const {ClassesModel} = require("../models/classesModel")
+const {OrdersModel} = require("../models/ordersModel")
+const {UserModel} = require("../models/userModel")
+// const {TrainerModel} = require("../models/trainerModel")
 
 dashboardRouter.get("/",(req,res)=>{
     res.status(200).send({message:"Admin Page"})
@@ -43,11 +45,35 @@ dashboardRouter.post('/signup',async(req,res)=>{
 })
 
 dashboardRouter.get("/all", async (req, res) => {
-    res.status(200).send({message:"Details of Users, Trainers, Classes etc.."})
+    // res.status(200).send({message:"Details of Users, Trainers, Classes etc.."})
+    try {
+    let users = await UserModel.find();
+    let classes = await ClassesModel.find();
+    let orders = await OrdersModel.find();
+    // let trainers = await TrainerModel.find();
+    console.log(users, classes, orders)
+
+    // let trainersPending = trainers.filter((e) => {
+    //   return e.status === false;
+    // });
+    // let trainersApproved = trainers.filter((e) => {
+    //   return e.status === true;
+    // });
+    
+    res.send({
+      msg: "Dashboard Done",
+    //   trainersPending: docPending,
+    //   trainersApproved: docApproved,
+      usersRegistered: users,
+      totalUsers: users.length,
+      totalClasses: classes.length,
+      totalOrders: orders.length,
+    //   totalTrainers: trainers.length,
+    });
+  } catch (error) {
+    console.log({ msg: "Error" });
+  }
 })
-
-
-
 
 module.exports = { dashboardRouter };
 
