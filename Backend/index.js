@@ -11,6 +11,9 @@ require('dotenv').config()
 const app=express()
 app.use(cors())
 app.use(express.json())
+const {passport} = require("./google.outh");
+
+app.use(cors({ origin: "*" }));
 
 app.get("/",(req,res)=>{
     res.send("Base Endpoint Of API")

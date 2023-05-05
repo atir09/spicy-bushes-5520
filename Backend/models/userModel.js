@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-    name:String,
-    email:String,
-    password:String,
+    name:{type:String, required:true},
+    email:{type:String, required:true},
+    password:{type:String, required:true},
     phone:String,
-    country:String,
+    country:{type:String, required:true},
     sex:String,
     role:{type:String,enum:["trainer","client"],default:"client"},
     age:Number,
