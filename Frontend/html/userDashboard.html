@@ -6,124 +6,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="shortcut icon" href="../Images/favicons/favicon6.ico" type="image/x-icon">
+    <link rel="icon" href="../Images/favicons/favicon6.ico" type="image/x-icon">
     <title>Workout</title>
-
+    
     <!-- <link rel="stylesheet" href="../styles/index.css"> -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>User Dashboard</title>
+    <title>Fito - Fitness Bootstrap Admin Dashboard</title>
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <link rel="stylesheet" href="../vendor/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="vendor/chartist/css/chartist.min.css">
     <link href="../vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="../vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <!-- <link href="../styles/style.css" rel="stylesheet"> -->
     <link href="../vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/userDashboard.css">
+    <link rel="stylesheet" href="../css/trainerDashboard.css">
 </head>
 
 <body>
-    <nav class="navbar">
+    
+    <header class="header">
 
-
-
-        <div class="logo"><img src="./imgs/image_480.png" alt=""></div>
-
-
-
-        <ul class="nav-links">
-
-
-
-            <input type="checkbox" id="checkbox_toggle" />
-
-            <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-
-
-            <div class="menu">
-
-                <li> <a href="./userDashboard.html">Home </a></li>
-
-                <li><a href="./userSearchClass.html">Class Search</a></li>
-
-                <li><a href="./userSearchClass.html">My Classses</a></li>
-
-                <li><a href="./userSearchClass.html">Favorites</a></li>
-
-                <li><a href="../pages/login.html" onclick="logoutFun()">Logout</a></li>
-
-            </div>
-
-        </ul>
-
-    </nav>
+        <a href="#" class="logo"> <img src="../imgs/logo.png" alt="logo"></a>
+  
+          <div id="menu-btn" class="fas fa-bars"></div>
+  
+          <nav class="navbar">
+              <a href="../index.html">home</a>
+              <a href="#about">about</a>
+              <a href="./userSearchClass.html">Classes</a>
+              <a href="./Login.html">Logout</a>
+          </nav>
+  
+      </header>
     <div id="clientinfo">
-
+      
     </div>
-
+    <div id="yourclasses">
+        <h4>Your Classses</h4>
+    </div>
+   
 
 
     <div id="temp">
-        <!-- <div class="col-xl-12"> -->
-        <!-- <div class="card flex-xl-column flex-md-row flex-column"> -->
-        <div class="card-body1 border-bottom pb-4 p-2 event-calender" id="calender">
-            <input type='text' class="form-control d-none" id='datetimepicker1' />
-        </div>
+         
+                    <div id='datetimepicker1' ></div> 
 
-        <!-- </div> -->
-        <!-- </div> -->
-        <div id="main-wrapper">
+             <div id="cardcontainer">
+                
 
-
-            <div class="content-body">
-
-                <div class="container-fluid" style="
-                margin-left: 50px;">
-
-                    <div class="col-xl-9 col-xxl-8">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="card plan-list">
-                                    <div class="card-header d-sm-flex d-block pb-0 border-0">
-                                        <div class="mr-auto pr-3">
-                                            <h4 class="text-black fs-20">Classes List</h4>
-                                            <!-- <p class="fs-13 mb-0 text-black">Lorem ipsum dolor sit amet, consectetur</p> -->
-                                        </div>
-                                        <div class="dropdown mt-sm-0 mt-3">
-                                            <button type="button"
-                                                class="btn rounded border text-black border-light dropdown-toggle"
-                                                data-toggle="dropdown" aria-expanded="false">
-                                                Unfinished
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="javascript:void(0);">Link 1</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Link 2</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Link 3</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+     
+             </div>
+       
     </div>
- 
+   
 
-
+    
     <script src="../vendor/global/global.min.js"></script>
     <script src="../vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="../vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="../vendor/bootstrap-datetimepicker/js/moment.js"></script>
     <script src="../vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="../js/custom.min.js"></script>
-    <script src="../js/deznav-init.js"></script>
+    <script src="../scripts/custom.min.js"></script>
+    <script src="../scripts/deznav-init.js"></script>
     <script src="https://use.fontawesome.com/a9639bff1c.js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script>
@@ -135,7 +82,7 @@
     </script>
     <script>
         w3.slideshow(".nature");
-    </script>
+        </script>
 </body>
 
 </html>
