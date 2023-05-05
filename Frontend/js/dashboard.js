@@ -185,12 +185,12 @@ function renderRecentPatients(elem1,elem2,elem3){
 
 async function recentApps(){
     try{
-        let res=await fetch(baseURL+"appointment/all");
+        let res=await fetch(baseURL+"class/all");
         if(res.ok){
             let data=await res.json();
-            // console.log(data);
-            renderAppsData(data.appointments);
-            let arr=data.appointments;
+            // console.log(data.classes[0].title);
+            renderAppsData(data.classes);
+            let arr=data.classes;
             renderRecentApps(arr[arr.length-1],arr[arr.length-2],arr[arr.length-3]);  
         }
     }catch(err){
@@ -201,22 +201,22 @@ async function recentApps(){
 function renderRecentApps(elem1,elem2,elem3){
     document.getElementById("app-tbody").innerHTML=`
     <tr>
-        <td>${elem1.patientFirstName}</td>
-        <td>${elem1.docFirstName}</td>
-        <td>${elem1.appointmentDate}</td>
-        <td style=${elem1.status?"color:green":"color:red"}>${elem1.status?"Approved":"Pending"}</td>
+        <td>${elem1.title}</td>
+        <td>${elem1.trainerName}</td>
+        <td>${elem1.classDate}</td>
+        <td>${elem1.classTime}</td>
     </tr>
     <tr>
-        <td>${elem2.patientFirstName}</td>
-        <td>${elem2.docFirstName}</td>
-        <td>${elem2.appointmentDate}</td>
-        <td style=${elem1.status?"color:green":"color:red"}>${elem2.status?"Approved":"Pending"}</td>
+        <td>${elem2.title}</td>
+        <td>${elem2.trainerName}</td>
+        <td>${elem2.classDate}</td>
+        <td>${elem2.classTime}</td>
     </tr>
     <tr>
-        <td>${elem3.patientFirstName}</td>
-        <td>${elem3.docFirstName}</td>
-        <td>${elem3.appointmentDate}</td>
-        <td style=${elem1.status?"color:green":"color:red"}>${elem3.status?"Approved":"Pending"}</td>
+        <td>${elem3.title}</td>
+        <td>${elem3.trainerName}</td>
+        <td>${elem3.classDate}</td>
+        <td>${elem3.classTime}</td>
     </tr>
 `
 }
@@ -343,7 +343,7 @@ async function approveDoctor(id){
 //DELETE DOCTOR
 async function deleteDoc(id){
     try{
-        let res=await fetch(baseURL+`doctor/removeDoctor/${id}`,{
+        let res=await fetch(baseURL+`class/delete/${id}`,{
             method:"DELETE",
             headers:{
 				"content-type": "application/json"
@@ -357,6 +357,24 @@ async function deleteDoc(id){
         console.log(err);
     }    
 }
+
+async function deleteUser(id){
+    try{
+        let res=await fetch(baseURL+`user/delete/${id}`,{
+            method:"DELETE",
+            headers:{
+				"content-type": "application/json"
+			}
+        });
+        if(res.ok){
+            let data=await res.json();
+            recentDocs();
+        }
+    }catch(err){
+        console.log(err);
+    }    
+}
+
 
 //SEARCH DOCTOR
 let docInputTag=document.querySelector("#doc-sf-left>input");
@@ -420,7 +438,7 @@ document.querySelector("#filter-approval>p").addEventListener("click",async (e)=
 })
 
 
-//PATIENTS DATA DISPLAY
+//USERS DATA DISPLAY
 
 function renderPatientsData(arr){
     let users_tbody=document.getElementById("user-render");
@@ -444,13 +462,19 @@ function renderPatientsData(arr){
         let block=document.createElement("td");
         block.innerText="Block";
         block.style.color="red";
+        block.addEventListener("click",(e)=>{
+            swal("", "Confirm Delete?", "info").then(function() {
+                deleteUser(elem._id);
+                });
+        })
+
 
         tr.append(name,email,phone,gender,block);
         users_tbody.append(tr);
     })
 }
 
-//APPOINTMENTS DATA DISPLAY
+//CLASSES DATA DISPLAY
 
 function renderAppsData(arr){
     // console.log(arr);
@@ -460,41 +484,74 @@ function renderAppsData(arr){
     arr.forEach((elem)=>{
         let tr=document.createElement("tr");
 
-        let pname=document.createElement("td");
-        pname.innerText=elem.patientFirstName;
+        let title=document.createElement("td");
+        title.innerText=elem.title;
 
-        let gender=document.createElement("td");
-        gender.innerText=elem.gender;
-
-        let doc=document.createElement("td");
-        doc.innerText=elem.docFirstName;
+        let trainerName=document.createElement("td");
+        trainerName.innerText=elem.trainerName;
 
         let date=document.createElement("td");
-        date.innerText=elem.appointmentDate;
+        date.innerText=elem.classDate;
 
-        let reason=document.createElement("td");
-        reason.innerText=elem.problemDescription;
+        let time=document.createElement("td");
+        time.innerText=elem.classTime;
 
-        let status=document.createElement("td");
-        if(elem.status){
-            status.innerText="Paid";
-            status.style.color="blue";
-        }else{
-            status.innerText="Not Paid";
-            status.style.color="red"; 
-            status.addEventListener("click",(e)=>{
-                // console.log(arr);
-                swal("", "Confirm Approval?", "info").then(function() {
-                    approveApp(elem._id);
-                    });
-            })          
-        }
+        let venue=document.createElement("td");
+        venue.innerText=elem.venue;
+
+        let del=document.createElement("td");
+        del.innerText="Remove";
+        del.style.color="red";
+        del.addEventListener("click",(e)=>{
+            swal("", "Confirm Delete?", "info").then(function() {
+                deleteDoc(elem._id);
+                });
+        })
 
 
-        tr.append(pname,gender,doc,date,reason,status);
+
+        tr.append(title,trainerName,date,time,venue,del);
         apps_tbody.append(tr);
     })
 }
+
+let classInputTag=document.querySelector("#app-sf-left>input");
+classInputTag.addEventListener("input", async (e)=>{
+    let searchVal=classInputTag.value;
+    try{
+        let res=await fetch(baseURL+`class/all`);
+        if(res.ok){
+            let data=await res.json();
+            //console.log(data);
+            let newData = data.classes.filter(function(element){
+        return element.title.toLowerCase().includes(searchVal.toLowerCase());
+    });
+            renderAppsData(newData);
+        }
+    }catch(err){
+        console.log(err);
+    }
+})
+
+
+let userInputTag=document.querySelector("#patient-sf-left>input");
+userInputTag.addEventListener("input", async (e)=>{
+    let searchVal=userInputTag.value;
+    try{
+        let res=await fetch(baseURL+`user/all`);
+        if(res.ok){
+            let data=await res.json();
+            //console.log(data);
+            let newData = data.users.filter(function(element){
+        return element.name.toLowerCase().includes(searchVal.toLowerCase());
+    });
+            renderPatientsData(newData);
+        }
+    }catch(err){
+        console.log(err);
+    }
+})
+
 
 //APPROVE Appointment
 async function approveApp(id){
