@@ -1,6 +1,11 @@
 import baseURL from "./baseURL.js"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
+let logoimg_nav=document.getElementById("logoimg_nav")
+logoimg_nav.addEventListener("click",()=>{
+    window.location.assign("/Frontend/html/userDashboard.html");
+    // console.log("yes")
+})
 if(!loggedInUser){    
     window.location.assign("/frontend/pages/login.html");
 }
@@ -182,3 +187,4 @@ function getRandomItem(arr) {
    let item = arr[randomIndex];
   return item;
 }
+
