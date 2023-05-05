@@ -3,7 +3,6 @@ const {AdminModel} = require("../models/adminModel");
 const {ClassesModel} = require("../models/classesModel")
 const {OrdersModel} = require("../models/ordersModel")
 const {UserModel} = require("../models/userModel")
-// const {TrainerModel} = require("../models/trainerModel")
 
 dashboardRouter.get("/",(req,res)=>{
     res.status(200).send({message:"Admin Page"})
@@ -47,22 +46,22 @@ dashboardRouter.post('/signup',async(req,res)=>{
 dashboardRouter.get("/all", async (req, res) => {
     // res.status(200).send({message:"Details of Users, Trainers, Classes etc.."})
     try {
-    let users = await UserModel.find();
+    let users = await UserModel.find({role:"client"});
     let classes = await ClassesModel.find();
     let orders = await OrdersModel.find();
-    // let trainers = await TrainerModel.find();
-    console.log(users, classes, orders)
+    let trainers = await UserModel.find({role:"trainer"});
+    // console.log(users, classes, orders,trainers)
     
     res.send({
       msg: "Dashboard Done",
-      // trainersRegistered: trainers,
+      trainersRegistered: trainers,
       usersRegistered: users,
       classesRegistered: classes,
       ordersCompleted: orders,
       totalUsers: users.length,
       totalClasses: classes.length,
       totalOrders: orders.length,
-    //   totalTrainers: trainers.length,
+      totalTrainers: trainers.length,
     });
   } catch (error) {
     console.log({ msg: "Error" });
