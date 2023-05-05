@@ -5,49 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../Images/favicons/favicon6.ico" type="image/x-icon">
+    <link rel="icon" href="../Images/favicons/favicon6.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="../styles/style.css"> -->
     <link rel="stylesheet" href="../css/userSearchClass.css">
+    <!-- <link rel="stylesheet" href="../styles/userDashboard.css"> -->
     <link rel="stylesheet" href="../css/userDashboard.css">
+    <link rel="stylesheet" href="../css/trainerDashboard.css">
     <title>Search Classes</title>
 </head>
 <body>
-    <nav class="navbar">
-
-     
-        
-        <div class="logo"><img src="../Images//logo/logo.png" alt=""></div>
-        
     
-        
-            <ul class="nav-links">
-        
-    
-        
-                <input type="checkbox" id="checkbox_toggle" />
-        
-                <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-        
-        
-                <div class="menu">
-            
-                    <li><a href="./userDashboard.html">Home</a></li>
-            
-                    <li><a href="./userSearchClass.html">Class Search</a></li>
-            
-                    <li><a href="./userDashboard.html">My Classses</a></li>
-            
-                    <li><a href="./userDashboard.html">Favorites</a></li>
-
-                    <li><a href="../pages/login.html" onclick="logoutFun()">Logout</a></li>
-            
-                </div>
-        
-            </ul>
-        
-    </nav>
     <div id="middlediv">
        
+        <header class="header">
 
+            <a href="#" class="logo"> <img src="../imgs/logo.png" alt="logo"></a>
+      
+              <div id="menu-btn" class="fas fa-bars"></div>
+      
+              <nav class="navbar">
+                  <a href="../index.html">home</a>
+                  <a href="#about">about</a>
+                  <a href="./userSearchClass.html">Classes</a>
+                  <a href="./Login.html">Logout</a>
+              </nav>
+      
+          </header>
         
         <div id="searchclass">
             <div id="filterinfo">
@@ -107,7 +91,7 @@
         <div id="allclassediv">
             <h3 id="allclasstitle">All Classes</h3>
 
-            <div id="allclassescard">
+            <div id="cardcontainer">
                 
                
             </div>

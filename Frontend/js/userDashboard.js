@@ -1,9 +1,9 @@
-let baseURL="https://stormy-flannel-shirt-lion-cyclic.app"
+const baseURL="https://stormy-flannel-shirt-lion-cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
-if (!loggedInUser) {
-    window.location.assign("/Frontend/html/login.html");
-}
+// if (!loggedInUser) {
+//     window.location.assign("/frontend/pages/login.html");
+// }
 let loggedInUserEmail = loggedInUser.email;
 // console.log(loggedInUser)
 
@@ -51,9 +51,38 @@ function renderUserInfo(totallength) {
 `
 }
 
+// let images=["https://www.beautybebo.com/pub/media/mega-menu/slider-1.jpg",
+// "https://www.beautybebo.com/pub/media/mega-menu/slider-3.jpg",
+// "https://www.beautybebo.com/pub/media/mega-menu/slider-2.jpg"];
+// let x;
+// start()
+//   function start() {
+//     let slideImg = document.querySelector("#clientinfo>img");
+//     let i = 0;
+//     x = setInterval(function () {
+//       if (i == images.length) {
+//         i = 0;
+//       }
+//       slideImg.src = images[i++];
+//       document.getElementById("clientinfo").append(slideImg);
+//     }, 3000);
+//   }
 
 
 
+
+
+function renderTotalClass(count) {
+    if (count <= 0) {
+        return ` <p class="notclassrender">You didn't join any class.</p>
+<p class="notclassrender">For join class <a id='searchanc' href="./userSearchClass.html">click here.</a></p>`
+    } else {
+        return `<div id="notclassdiv">
+    <p class="notclassrender">Total classes joind by you is ${count}.</p>
+<p class="notclassrender">For join more class <a id='searchanc' href="./userSearchClass.html">click here.</a></p>
+</div>`
+    }
+}
 
 
 
@@ -84,45 +113,42 @@ async function getClass(id) {
 
 
 
-let divForRender = document.getElementsByClassName("card-body")
+// let divForRender = document.getElementsByClassName("card")
+let divForRender = document.getElementById("cardcontainer")
+
+                async function renderderAllData(allData) {
+                    // console.log(allData)
+                    divForRender.innerHTML = ""
+                    let map_allData = allData.map(elem => {
+                        return `                            
+                        <div class="card">
+                        <div class="left1">
+                            <p class="day">${elem.classDate[8]}${elem.classDate[9]}th </p>
+                            <span class="time">${elem.classTime}</span>
+                        </div >
+                        <div class="information">
+                            <h4> <a href=./classDetails.html?id=${elem._id} >${elem.title}</a></h4>
+                            <span>${elem.seatOccupied} Seats Booked in ${elem.seatTotal} Seats </span>
+                            <br>
+                            <span>Total Price: ₹ ${elem.price}</span>
+                        </div>
+                        <div class="classinfo">
+                            <span class="classinfoname">${elem.activity}</span>
+                        </div>
+                        <a class="joinclassbutton " data-id=${elem._id}>Details</a>
+                        </div>
+                                                                `
+                
+                    })
 
 
 
 
-            async function renderderAllData(allData) {
-                // console.log(allData)
-                divForRender.innerHTML = ""
-                let map_allData = allData.map(elem => {
-                    return `                            <div class="d-flex px-3 pt-3 list-row flex-wrap align-items-center mb-2">
-                                                           <div class="list-icon mr-3 mb-3">
-                                                                <p class="fs-24 text-primary mb-0 mt-2">${elem.classDate[8]}${elem.classDate[9]}</p>
-                                                                <span class="fs-14 text-primary">${elem.classTime}</span>
-                                                            </div >
-                                                            <div class="info mb-3">
-                                                                <h4 class="fs-20 "> <a href=./classDetails.html?id=${elem._id} class="singleclasslink text-black" >${elem.title}</a></h4>
-                                                                <span class="text-danger font-w600">${elem.seatOccupied} Seats Booked in ${elem.seatTotal} Seats </span>
-                                                                <br>
-                                                                <span class="text-black font-w600">Total Price: ₹ ${elem.price}</span>
-                                                            </div>
-                                                            <div class="d-flex mb-3 mr-auto pl-3 pr-3 align-items-center">
-                                                                <span class="text-info ml-2">${elem.activity}</span>
-                                                            </div>
-                                                           
-                                                            <a class="btn mb-3 btn-outline-primary rounded mr-3 joinclassbutton " data-id=${elem._id}>Details</a>
-                                                           
-                                                            </div>   
-                                                            `
-            
-                })
+                // for (let i = 0; i < divForRender.length; i++) {
+                //     divForRender[i].innerHTML = map_allData.join("")
+                //   }
 
-
-
-
-                for (let i = 0; i < divForRender.length; i++) {
-                    divForRender[i].innerHTML = map_allData.join("")
-                  }
-
-    
+                  divForRender.innerHTML = map_allData.join("")
 
     let joicClassbtn = document.querySelectorAll('.joinclassbutton')
     joicClassbtn.forEach(elem => {

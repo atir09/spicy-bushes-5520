@@ -10,6 +10,7 @@ h4{
 }
 p,a{
     color: white;
+    font-size: 15px;
 }
 
 body{
@@ -37,6 +38,7 @@ body{
 #searchclass{
     border: 1px solid gray;
     padding: 20px;
+    margin-top: 80px;
 }
 #searchclass div{
     text-align: center;
@@ -144,13 +146,19 @@ body{
     width: 100%;
     padding: 8px  0px;
      padding-left: 5px;
+     text-align: center;
+     font-weight: 700;
+     font-size: 20px;
 }
 
 #allclassescard, #alluserscard ,#allorderscard{
 margin-top: 10px;
 
 }
-
+#cardcontainer{
+    width: 90%;
+    margin: auto;
+}
 .imgclassdiv{
     display: flex;
     /* align-items: center; */
@@ -164,10 +172,10 @@ margin-top: 10px;
     margin-right: 5px;
 }
 
-.classcard{
-    width: 100%;
+.card{
+    /* width: 100%; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -178,6 +186,18 @@ margin-top: 10px;
     width: 30%;
     align-items: center;
 }
+.information{
+    display: flex;
+    align-items: center;
+   
+}
+.second{
+    display: flex;
+    align-items: center;
+    
+}
+
+
 
 .joinclassdiv{
    width: 20%;
@@ -186,13 +206,13 @@ margin-top: 10px;
    align-items: center;
    justify-content: center;
  } 
- .joinclassbutton{
+ /* .joinclassbutton{
     padding: 7px;
     border-radius: 5px;
     width: 60%;
     background-color: #b9d8d5;
     border: none;
- }
+ } */
  .joinclassbutton:hover{
     /* background-color:#beebe5; */
     cursor: pointer;
