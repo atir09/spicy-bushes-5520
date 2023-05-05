@@ -108,27 +108,18 @@ async function  renderAllData(classes,trainerInfo){
            <h3 id="" class="heading" ><span>Class Details</span></h3>
            <div id="onlyclassinfo">
                <div id="classheads">
-                   <h4>Name :</h4>
-                   <h4>Activity :</h4>
-                   <h4>Date :</h4>
-                   <h4>Time :</h4>
-                   <h4>Mode:</h4>
-                   <h4 id="linkH4Key">Link/Location :</h4>
-                   <h4>Duration:</h4>
-                   <h4>Total Seats :</h4>
-                   <h4>Seats Occupied :</h4>
+                   <h4>Name : ${classes.title}</h4>
+                   <h4>Activity : ${classes.activity}</h4>
+                   <h4>Date : ${classes.classDate}</h4>
+                   <h4>Time : ${classes.classTime}</h4>
+                   <h4>Mode: ${classes.venue}</h4>
+                   <h4 id="linkH4Key">Link/Location : ${classes.locationOrLink}</h4>
+                   <h4>Duration: ${classes.duration}</h4>
+                   <h4>Total Seats : ${classes.seatTotal}</h4>
+                   <h4>Seats Occupied : ${classes.seatOccupied}</h4>
+                   <button class="cancel-btn" onclick="DeleteClass(${classes._id})">Cancel</button>
                </div>
-               <div id="classinfos">
-                   <h4>${classes.title}</h4>
-                   <h4>${classes.activity}</h4>
-                   <h4>${classes.classDate}</h4>
-                   <h4>${classes.classTime}</h4>
-                   <h4>${classes.venue}</h4>
-                   <h4 id="linkH4Value">${classes.locationOrLink}</h4>
-                   <h4>${classes.duration}</h4>
-                   <h4>${classes.seatTotal}</h4>
-                   <h4>${classes.seatOccupied}</h4>
-               </div>
+              
            </div>
        </div>
        <div id="infomode">
@@ -244,4 +235,32 @@ function rederActDesc(activity){
     activity=activity.toLowerCase()
     let desc=obj[`${activity}`]
     return desc
+}
+
+
+
+
+
+// ........................Delete Class.............................................
+async function DeleteClass(classid){
+    try {
+        let data=await fetch(baseURL+`/class/delete/${classid}`,{
+            method:"DELETE",
+            headers:{   
+                authorization:`Bearer ${loggedInUserEmail}`
+            }
+        })
+        if(data.ok){
+            // alert("Class Deleted Successfully")
+            swal({text: "Class Deleted Successfully", icon: "success", button: "ok", timer:1000})
+			    window.location.assign(`./trainerDashboard.html`)
+        }else{
+            // alert("Class not deleted")
+            swal({text: "Class not deleted", icon: "error", button: "ok", timer:1000})
+        }
+    } catch (error) {
+        // alert("Server not responding");
+        swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
+        console.log(error.message)
+    }
 }

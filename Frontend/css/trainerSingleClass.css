@@ -235,7 +235,7 @@ h4{
 
 .heading {
   text-align: center;
-  margin-bottom: 3rem;
+  margin: 3rem 0;
   position: relative;
 }
 
@@ -325,8 +325,13 @@ h4{
  /* background-color: red; */
  margin-top:35px;
  padding-left: 2%;
+ color: #fff;
+ font-size: 1.7rem;
 }
 
+#classheads{
+  margin: auto;
+}
 
 
 #infomode{
@@ -345,6 +350,9 @@ h4{
   margin-top: 33px;
   width: 90%;
   height: 220px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #infotrainer{
@@ -363,6 +371,8 @@ h4{
  flex-direction: column;
  align-items: center;
  margin-top: 30px;
+ font-size: 1.7rem;
+ color: #fff;
 }
 #trainermaininfo img{
   width: 112px;
@@ -383,6 +393,7 @@ h4{
   align-items: center;
   /* background-color: red; */
   margin-top: 2%;
+
 }
 
 @media(min-width:561px) and (max-width: 830px){
@@ -432,7 +443,7 @@ h4{
 }
 
 #descdesc p{
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 @media(min-width:70px) and (max-width: 1230px){
