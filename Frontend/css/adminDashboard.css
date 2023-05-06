@@ -2,17 +2,17 @@
 
 /* ----root variables---- */
 :root {
-    --color-primary: #7380ec;
+    --color-primary: #ff004f;
     --color-danger: #ff7782;
     --color-success: #41f1b6;
     --color-warning: #ffbb55;
     --color-white: #fff;
     --color-info-dark: #7d8da1;
-    --color-info-light: #dce1eb;
+    --color-info-light: #7d8da1;
     --color-dark: #363949;
     --color-light: rgba(132, 139, 200, 0.18);
     --color-primary-varient: #111e88;
-    --color-dark-varient: #677483;
+    --color-dark-varient: #7d8da1;
     --color-background: #f6f6f9;
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
@@ -155,13 +155,14 @@ aside .logo {
 }
 
 aside .logo img {
-    width: 4rem;
-    height: 4rem;
+    width: 6rem;
+    height: 3rem;
 }
 
 /* aside .close{
     display: none;
 } */
+
 .profile {
     /* border:1px solid black; */
     background: var(--color-info-light);
@@ -297,14 +298,42 @@ main {
 .sc-logo {
     /* border:1px solid blue; */
     width: 25%;
-    text-align: center;
+    padding-top: 2rem;
+    /* font-size: 100px; */
+    /* text-align: center; */
+}
+
+.sc-logo h2{
+    /* border:1px solid blue; */
+    /* width: 25%; */
+    
+    font-size: 30px;
+    /* text-align: center; */
 }
 
 .sc-info {
     /* border:1px solid red; */
-    width: 65%;
-    font-size: 15px;
-    padding-left: 1rem;
+    width: 40%;
+    font-size: 100px;
+   
+    /* padding-left: 1rem; */
+}
+
+#total-pat{
+    color: #ff004f;
+}
+
+#total-doc {
+    color: #ff004f;
+}
+
+#total-app {
+    color: #ff004f;
+}
+
+.edit-doc input,
+.create-doc input{
+    border-radius: 5px;
 }
 
 .latest {
@@ -366,7 +395,7 @@ main {
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 10px;
-    background-color: #dce1eb;
+    background-color: #7d8da1;
     color: black;
 }
 
@@ -395,6 +424,12 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#doc-render, 
+#user-render,
+#apps-render{
+    background-color: #7d8da1
 }
 
 .doc-db,
@@ -448,6 +483,8 @@ main {
     padding: 0.5rem;
     width: 20%;
 }
+
+
 
 #doc-sf-right>select,
 #patient-sf-right>select,
