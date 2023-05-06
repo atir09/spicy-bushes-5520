@@ -95,6 +95,7 @@ padding: 16px;
 }
 .classinfoname{
     color: #1EA7C5 ;
+    font-size: 12px;
 }
 .joinclassbutton{
     color: #6CC51D;
@@ -116,6 +117,7 @@ padding: 16px;
 }
 #clientinfo div{
     border-radius: 8px;
+    display: flex;
 }
 #clientname{
     background-image: url("https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&w=600");
