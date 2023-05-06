@@ -448,13 +448,18 @@ main {
 }
 
 #doc-sf,
-#patient-sf,
 #app-sf {
-    /* border:1px solid blue; */
-    width: 50%;
+    /* border:1px solid red; */
+    width: 60%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* justify-content: space-between; */
+    align-items: left;
+    
+}
+
+.patient-search-bar>#patient-sf{
+    display: flex;
+    width: 60%;
 }
 
 #doc-sf-left,
@@ -463,13 +468,21 @@ main {
 #patient-sf-right,
 #app-sf-right,
 #app-sf-left {
-    border: 1px solid lightgray;
-    width: 48%;
+    /* border: 1px solid green; */
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1rem;
+    
 }
 
+
+#patient-sf>div,
+#patient-sf>button{
+    /* border: 2px solid red; */
+    border-radius: 5px;
+}
 #doc-sf-left>input,
 #patient-sf-left>input,
 #app-sf-left>input {
@@ -482,6 +495,7 @@ main {
 #app-sf-left>button {
     padding: 0.5rem;
     width: 20%;
+    background-color: #ff004f;
 }
 
 
@@ -577,3 +591,49 @@ main {
 #filter-approval>*:hover {
     cursor: pointer;
 }
+
+
+/* ----------------------------------- Responsiveness ---------------------------- */
+
+@media all and (min-width:300px) and (max-width:900px) {
+    .status-bar{
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .latest{
+        display: flex;
+            flex-direction: column;
+            justify-content: center;
+    }
+
+    .doctor-input{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+
+    .doc-search-bar,
+    .patient-search-bar,
+    .app-search-bar{
+    display: flex;
+    flex-direction: column;
+    }
+
+    #doc-sf-left,
+    #doc-sf-right,
+    #patient-sf-left,
+    #patient-sf-right,
+    #app-sf-right,
+    #app-sf-left{
+        width: 60%;
+        margin: 1rem 0;
+    }
+    
+    
+}
+
+
+
