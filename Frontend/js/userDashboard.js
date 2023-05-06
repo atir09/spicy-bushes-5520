@@ -1,4 +1,6 @@
-const baseURL="https://stormy-flannel-shirt-lion-cyclic.app"
+// const baseURL="https://stormy-flannel-shirt-lion-cyclic.app"
+const baseURL="http://localhost:9876/"
+
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 // if (!loggedInUser) {
@@ -51,22 +53,7 @@ function renderUserInfo(totallength) {
 `
 }
 
-// let images=["https://www.beautybebo.com/pub/media/mega-menu/slider-1.jpg",
-// "https://www.beautybebo.com/pub/media/mega-menu/slider-3.jpg",
-// "https://www.beautybebo.com/pub/media/mega-menu/slider-2.jpg"];
-// let x;
-// start()
-//   function start() {
-//     let slideImg = document.querySelector("#clientinfo>img");
-//     let i = 0;
-//     x = setInterval(function () {
-//       if (i == images.length) {
-//         i = 0;
-//       }
-//       slideImg.src = images[i++];
-//       document.getElementById("clientinfo").append(slideImg);
-//     }, 3000);
-//   }
+
 
 
 
@@ -98,7 +85,7 @@ async function getClass(id) {
         })
         let temp = await fetchingData.json()
         if (fetchingData.ok) {
-            // console.log(temp)
+            console.log(temp)
             renderderAllData(temp.classes)
         } else {
             console.log(temp)
