@@ -25,6 +25,17 @@ userRouter.get("/all", async (req,res)=>{
     }
 })
 
+userRouter.get("/singletrainer/:id", async (req,res)=>{
+    let trainerID= req.params.id;
+    try{
+        let trainer = await UserModel.findById(trainerID);
+        res.status(200).send({message:"Trainer Data Fetched",trainer})
+    }catch(error){
+        res.status(400).send({message:"Something went wrong",error:error.message})
+        console.log(error)
+    }
+})
+
 // User - Single User Detail
 userRouter.get("/:id", async (req,res)=>{
     let userID= req.params.id;
@@ -46,11 +57,13 @@ userRouter.post("/register", async (req,res)=>{
         if(user.length>0){
             res.status(400).send({error:"User already registered in Database"})
         }else{
-            bcrypt.hash(password, +process.env.salt, async function(err, hash) {
+            console.log("check");
+            bcrypt.hash(password, + process.env.salt, async function(err, hash) {
                 if(err){
                     res.status(401).send({message:"Server Error",error:err.message});
                     console.log(err)
                 }else{
+
                     let createdDate=get_date();
                     let createdTime=get_time();
                     let user = new UserModel({name, email, password:hash, phone, sex, country, role,createdDate,createdTime});
