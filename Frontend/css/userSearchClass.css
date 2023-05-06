@@ -61,7 +61,7 @@ body{
     width: 95%;
     /* margin-left: 3%; */
     border: none;
-    background-color: #000000;
+    background-color: #e90808;
     /* border-radius: 5px; */
     font-weight: bolder;
     color: white;
@@ -142,7 +142,7 @@ body{
 }
 
 #allclasstitle, #alluserstitle ,#allorderstitle{
-    background-color:#b9d8d5;
+    background-color:#d8b9b9;
     width: 100%;
     padding: 8px  0px;
      padding-left: 5px;
