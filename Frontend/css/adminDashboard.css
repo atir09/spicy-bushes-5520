@@ -426,6 +426,15 @@ main {
     align-items: center;
 }
 
+#add,
+#submit,
+.doc-search button{
+    width: 15%;
+    padding: 0.5rem;
+    border-radius: 10%;
+    background-color: #ff004f;
+}
+
 #doc-render, 
 #user-render,
 #apps-render{
@@ -595,7 +604,7 @@ main {
 
 /* ----------------------------------- Responsiveness ---------------------------- */
 
-@media all and (min-width:300px) and (max-width:900px) {
+@media all and (min-width:700px) and (max-width:1200px) {
     .status-bar{
     display: flex;
         flex-direction: column;
@@ -634,6 +643,5 @@ main {
     
     
 }
-
 
 

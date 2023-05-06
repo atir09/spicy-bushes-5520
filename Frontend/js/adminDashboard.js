@@ -214,6 +214,69 @@ function renderRecentApps(elem1,elem2,elem3){
 `
 }
 
+//Get Trainer
+async function gettrainers(){
+    let id = document.getElementById("trainer").value;
+
+    try{
+        let res=await fetch(baseURL+`user/singletrainer/${id}`,{
+            method:"GET",
+            headers:{
+				"content-type": "application/json"
+			},
+        });
+        console.log(res);
+        if(res.ok){
+            let data=await res.json();
+            console.log(data)
+
+            let updateform = document.getElementById("updateform");
+            
+        updateform.name.value=data.trainer.name
+        updateform.email.value=data.trainer.email
+        updateform.phone.value=data.trainer.phone
+        updateform.country.value=data.trainer.country
+    
+        }
+    }catch(err){
+        swal("","Error 404","warning");
+    }  
+}
+
+//Update Trainer
+async function updatetrainer(){
+    let id = document.getElementById("trainer").value;
+    let updateform = document.getElementById("updateform");
+    let docObj={
+        name: updateform.name.value,
+        email: updateform.email.value,
+        phone: updateform.phone.value,
+        country: updateform.country.value,
+    }
+    try{
+        let res=await fetch(baseURL+`user/update/${id}`,{
+            method:"PATCH",
+            headers:{
+				"content-type": "application/json"
+			},
+            body : JSON.stringify(docObj)
+        });
+        console.log(res);
+        if(res.ok){
+            let data=await res.json();
+            console.log(data)
+             swal("", `${data.trainer.name} detail updated`, "success")
+             .then(function() {
+                recentDocs();
+                });
+            }else{
+                swal("",`${data.msg}`,"warning");
+            }
+    }catch(err){
+        swal("","Error 404","warning");
+    }     
+}
+
 //Trainer Function
 function renderDocsData(arr){
     let docs_tbody=document.getElementById("doc-render");
@@ -254,14 +317,17 @@ let docForm=document.querySelector(".create-doc form");
 docForm.addEventListener("submit",(e)=>{
     e.preventDefault();
     const submit=confirm("Confirm submission?");
-    if(submit){addDoc();}
+    if(submit){
+        addDoc();
+    }
 })
 
 async function addDoc(){
     let docObj={
-        doctorName: docForm.name.value,
+        name: docForm.name.value,
         email: docForm.email.value,
-        phoneNo: docForm.phone.value,
+        password: docForm.password.value,
+        phone: docForm.phone.value,
         country: docForm.country.value,
         role: docForm.role.value
     }
@@ -270,14 +336,17 @@ async function addDoc(){
         let res=await fetch(baseURL+`user/register`,{
             method:"POST",
             headers:{
+                
 				"content-type": "application/json"
 			},
+            
             body: JSON.stringify(docObj)
         });
+        // console.log(res);
         if(res.ok){
             let data=await res.json();
-            console.log(data)
-            swal("", `${data.msg}`, "success").then(function() {
+            // console.log(data.message)
+            swal("", `${data.user.name}`, "success").then(function() {
                 recentDocs();
                 });
             }else{
