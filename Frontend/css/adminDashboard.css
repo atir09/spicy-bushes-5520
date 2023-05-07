@@ -644,4 +644,40 @@ main {
     
 }
 
-
+@media all and (min-width:300px) and (max-width:699px) {
+    .status-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    
+        .latest {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    
+        .doctor-input {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+    
+        }
+    
+        .doc-search-bar,
+        .patient-search-bar,
+        .app-search-bar {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        #doc-sf-left,
+        #doc-sf-right,
+        #patient-sf-left,
+        #patient-sf-right,
+        #app-sf-right,
+        #app-sf-left {
+            width: 60%;
+            margin: 1rem 0;
+        }
+}
