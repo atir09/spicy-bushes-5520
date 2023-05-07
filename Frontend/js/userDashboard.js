@@ -1,5 +1,17 @@
 // const baseURL="https://stormy-flannel-shirt-lion-cyclic.app"
 const baseURL="http://localhost:9876/"
+let menu = document.querySelector('#menu-btn');
+let navbar = document.querySelector('.header .navbar');
+
+menu.onclick = () => {
+	menu.classList.toggle('fa-times');
+	navbar.classList.toggle('active');
+};
+
+window.onscroll = () => {
+	menu.classList.remove('fa-times');
+	navbar.classList.remove('active');
+};
 
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
@@ -110,8 +122,8 @@ let divForRender = document.getElementById("cardcontainer")
                         return `                            
                         <div class="card">
                         <div class="left1">
-                            <p class="day">${elem.classDate[8]}${elem.classDate[9]}th </p>
-                            <span class="time">${elem.classTime}</span>
+                            <p class="day">On ${elem.classDate[8]}${elem.classDate[9]}th </p>
+                            <span class="time">At ${elem.classTime}</span>
                         </div >
                         <div class="information">
                             <h4> <a href=./classDetails.html?id=${elem._id} >${elem.title}</a></h4>
@@ -120,7 +132,7 @@ let divForRender = document.getElementById("cardcontainer")
                             <span>Total Price: ₹ ${elem.price}</span>
                         </div>
                         <div class="classinfo">
-                            <span class="classinfoname">${elem.activity}</span>
+                            <span class="classinfoname"><b>Class : </b>${elem.activity}</span>
                         </div>
                         <a class="joinclassbutton " data-id=${elem._id}>Details</a>
                         </div>

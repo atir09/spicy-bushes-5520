@@ -1,9 +1,20 @@
 // import baseURL from "./baseURL.js"
 const baseURL="http://localhost:9876/"
+let menu = document.querySelector('#menu-btn');
+let navbar = document.querySelector('.header .navbar');
 
+menu.onclick = () => {
+	menu.classList.toggle('fa-times');
+	navbar.classList.toggle('active');
+};
+
+window.onscroll = () => {
+	menu.classList.remove('fa-times');
+	navbar.classList.remove('active');
+};
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if(!loggedInUser){    
-    window.location.assign("/frontend/pages/login.html");
+    window.location.assign("/Frontend/html/login.html");
 }
 let loggedInUserEmail = loggedInUser.email;
 
