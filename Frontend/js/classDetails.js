@@ -116,8 +116,7 @@ async function  renderAllData(classes,trainerInfo){
                    <h4 id="linkH4Key">Link/Location : ${classes.locationOrLink}</h4>
                    <h4>Duration: ${classes.duration}</h4>
                    <h4>Total Seats : ${classes.seatTotal}</h4>
-                   <h4>Seats Occupied : ${classes.seatOccupied}</h4>
-                   <button class="cancel-btn" onclick="DeleteClass(event)" data-id=${classes._id}>Cancel</button>
+                   <h4>Seats Occupied : ${classes.seatOccupied}</h4>              
                </div>
               
            </div>
@@ -243,7 +242,6 @@ function rederActDesc(activity){
 
 // ........................Delete Class.............................................
 async function DeleteClass(classid){
-    let classid=event.target.getAttribute("data-id")
     try {
         let data=await fetch(baseURL+`/class/delete/${classid}`,{
             method:"DELETE",
