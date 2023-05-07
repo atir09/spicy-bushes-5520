@@ -26,6 +26,18 @@ body{
         flex-direction: column;
     }
 }
+@media(max-width: 395px){
+    #cardcontainer {
+    
+        /* width: 50%; */
+        margin-left: 45%;
+        flex-wrap: wrap;
+
+    }
+    #temp{
+        flex-direction: column;
+    }
+}
 .picker-switch .accordion-toggle{
     display: none;
 }
@@ -58,7 +70,8 @@ padding: 16px;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid rgba(108, 197, 29, 0.2);
+    /* border: 1px solid rgba(108, 197, 29, 0.2); */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 20px;
     border-radius: 15px;
     background-color: whitesmoke;
@@ -72,6 +85,7 @@ padding: 16px;
     border: 1px solid rgba(108, 197, 29, 0.2);
     border-radius: 15px;
     padding: 10px;
+    font-size: 12px;
     text-align: center;
     color: rgb(3, 145, 39);
     font-weight: 600;
@@ -95,15 +109,18 @@ padding: 16px;
 }
 .classinfoname{
     color: #1EA7C5 ;
+    font-size: 17px;
+    font-weight: 500;
 }
 .joinclassbutton{
-    color: #6CC51D;
+    color: #ffffff;
     padding: 0.625rem 1rem;
     border-radius: 0.875rem;
-    border: 1px solid #6CC51D;
+    /* border: 1px solid #6CC51D; */
+    background-color: #ff004f;
 }
 .joinclassbutton:hover{
-    background-color: #6CC51D;
+    background-color: #ff004f;
     color: white;
     font-weight: 600;
 }
@@ -116,12 +133,13 @@ padding: 16px;
 }
 #clientinfo div{
     border-radius: 8px;
+    display: flex;
 }
 #clientname{
     background-image: url("https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&w=600");
     background-size: cover;
     width: 100%;
-    /* display: flex; */
+    display: flex;
     margin: auto;
     align-items: center;
     justify-content: space-around;
@@ -166,6 +184,7 @@ padding: 16px;
 @media(min-width: 20px) and (max-width: 700px){
     #clientinfo{
         flex-direction: column;
+        margin-left: 45px;
     }
     #clientname{
         width: 95%;
