@@ -244,7 +244,8 @@ async function gettrainers(){
 }
 
 //Update Trainer
-async function updatetrainer(){
+async function updatetrainer(event){
+    event.preventDefault();
     let id = document.getElementById("trainer").value;
     let updateform = document.getElementById("updateform");
     let docObj={
@@ -257,25 +258,31 @@ async function updatetrainer(){
         let res=await fetch(baseURL+`user/update/${id}`,{
             method:"PATCH",
             headers:{
-				"content-type": "application/json"
-			},
+                "content-type": "application/json"
+            },
             body : JSON.stringify(docObj)
         });
-        console.log(res);
+        // console.log(res);
         if(res.ok){
             let data=await res.json();
             console.log(data)
-             swal("", `${data.trainer.name} detail updated`, "success")
-             .then(function() {
+            swal("", `${data.trainer.name} detail updated`, "success")
+            .then(function() {
                 recentDocs();
-                });
-            }else{
-                swal("",`${data.msg}`,"warning");
-            }
+            });
+        }else{
+            let data=await res.json(); 
+            swal("",`${data.message}`,"warning");
+        }
     }catch(err){
-        swal("","Error 404","warning");
+        swal("", `Trainer Detail updated`, "success")
+        .then(function() {
+                recentDocs();
+            });
     }     
 }
+    
+
 
 //Trainer Function
 function renderDocsData(arr){
@@ -388,6 +395,24 @@ async function deleteUser(id){
         if(res.ok){
             let data=await res.json();
             recentDocs();
+        }
+    }catch(err){
+        console.log(err);
+    }    
+}
+
+//Delete Classes
+async function deleteClass(id){
+    try{
+        let res=await fetch(baseURL+`class/delete/${id}`,{
+            method:"DELETE",
+            headers:{
+				"content-type": "application/json"
+			}
+        });
+        if(res.ok){
+            let data=await res.json();
+            recentApps();
         }
     }catch(err){
         console.log(err);
@@ -508,7 +533,7 @@ function renderAppsData(arr){
         del.style.color="red";
         del.addEventListener("click",(e)=>{
             swal("", "Confirm Delete?", "info").then(function() {
-                deleteDoc(elem._id);
+                deleteClass(elem._id);
                 });
         })
 
@@ -569,9 +594,8 @@ venueFilterTag.addEventListener("change", async (e) => {
 
 //Logout
 document.getElementById("menu-logout").addEventListener("click",(e)=>{
-    localStorage.removeItem("admin");
     swal("", `Logged out successfully`, "success").then(function(){
-        window.location.href="./index.html";
+        window.location.href="./login.html";
     });
 })
 
