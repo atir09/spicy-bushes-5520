@@ -1,5 +1,4 @@
-// import baseURL from "./baseURL.js"
-const baseURL="http://localhost:9876/"
+import baseURL from "./baseURL.js"
 let menu = document.querySelector('#menu-btn');
 let navbar = document.querySelector('.header .navbar');
 
@@ -21,6 +20,7 @@ let loggedInUserEmail = loggedInUser.email;
 getAllClass();
 let newData;
 async function getAllClass(){
+    // console.log(baseURL+"/class/all")
     try{
      let dataFetch=await fetch(baseURL+"/class/all",{
         headers:{   
@@ -55,7 +55,7 @@ function renderAllData(data){
    
 <div class="information">
 <div class="second">
-    <img src=${renderImages(elem.activity)} alt=${elem.activity} class="classimages"></img>
+    <img src=${renderImages(elem.title)} alt=${elem.title} class="classimages"></img>
     <h4> <a href=./classDetails.html?id=${elem._id} >${elem.title}</a></h4>
     </div>
    <div class="third">
@@ -65,9 +65,9 @@ function renderAllData(data){
     </div>
 </div>
 <div class="classinfo">
-    <span class="classinfoname">${elem.activity}</span>
+    <span class="classinfoname">Class: ${elem.title}</span>
 </div>
-<a class="joinclassbutton " data-id=${elem._id}>Details</a>
+<a class="joinclassbutton " data-id=${elem._id}>Book</a>
 </div>
 `
 
@@ -83,7 +83,7 @@ function renderAllData(data){
    joicClassbtn.forEach(elem=>{
     elem.addEventListener('click',(event)=>{
         let id = event.target.dataset.id;
-        window.location.assign(`./bookClass.html?id=${id}`)
+        window.location.assign(`./bookingClass.html?id=${id}`)
     })
    })
 }
@@ -166,22 +166,22 @@ pricecomp.addEventListener("change",(event)=>{
 
 function renderImages(actname){
     let allImagesData={
-        yoga:["../Images/Classes_Images/yoga1.jpg","../Images/Classes_Images/yoga2.jpg","../Images/Classes_Images/yoga3.jpg"],
-        cardio:["../Images/Classes_Images/boxing1.jpg","../Images/Classes_Images/aerobics2.jpg","../Images/Classes_Images/crossfit1.jpg"],
-        swimming:["../Images/Classes_Images/swimming1.jpg","../Images/Classes_Images/swimming2.jpg","../Images/Classes_Images/swimming3.jpg"],
-        running:["../Images/Classes_Images/football1.jpg","../Images/Classes_Images/football2.jpg","../Images/Classes_Images/football3.jpg"],
-        zumba:["../Images/Classes_Images/zumba1.jpg","../Images/Classes_Images/zumba2.jpg","../Images/Classes_Images/zumba3.jpg"],
-        aerobics:["../Images/Classes_Images/aerobics1.jpg","../Images/Classes_Images/aerobics2.jpg","../Images/Classes_Images/aerobics3.jpg"],
-        ballet:["../Images/Classes_Images/ballet1.jpg","../Images/Classes_Images/ballet2.jpg","../Images/Classes_Images/ballet3.jpg"],
-        basketball:["../Images/Classes_Images/basketball1.jpg","../Images/Classes_Images/basketball2.jpg","../Images/Classes_Images/basketball3.jpg"],
-        boxing:["../Images/Classes_Images/boxing1.jpg","../Images/Classes_Images/boxing3.jpg","../Images/Classes_Images/boxing2.jpg"],
-        crossfit:["../Images/Classes_Images/crossfit1.jpg","../Images/Classes_Images/crossfit3.jpg","../Images/Classes_Images/crossfit2.jpg"],
-        cycling:["../Images/Classes_Images/cycling1.jpg","../Images/Classes_Images/cycling2.jpg","../Images/Classes_Images/cycling3.jpg"],
-        football:["../Images/Classes_Images/football1.jpg","../Images/Classes_Images/football2.jpg","../Images/Classes_Images/football3.jpg"],
-        kickboxing:["../Images/Classes_Images/kickboxing1.jpg","../Images/Classes_Images/kickboxing2.jpg","../Images/Classes_Images/kickboxing3.jpg"],
-        singing:["../Images/Classes_Images/singing1.jpg","../Images/Classes_Images/singing3.jpg","../Images/Classes_Images/singing2.jpg"],
-        weighttraining:["../Images/Classes_Images/weighttraining1.jpg","../Images/Classes_Images/weighttraining2.jpg","../Images/Classes_Images/weighttraining3.jpg"],
-        dance:["../Images/Classes_Images/dance1.jpg","../Images/Classes_Images/dance2.jpg","../Images/Classes_Images/dance3.jpg"]
+        yoga:["../imgs/Classes_Images/yoga1.jpg","../imgs/Classes_Images/yoga2.jpg","../imgs/Classes_Images/yoga3.jpg"],
+        cardio:["../imgs/Classes_Images/boxing1.jpg","../imgs/Classes_Images/aerobics2.jpg","../imgs/Classes_Images/crossfit1.jpg"],
+        swimming:["../imgs/Classes_Images/swimming1.jpg","../imgs/Classes_Images/swimming2.jpg","../imgs/Classes_Images/swimming3.jpg"],
+        running:["../imgs/Classes_Images/football1.jpg","../imgs/Classes_Images/football2.jpg","../imgs/Classes_Images/football3.jpg"],
+        zumba:["../imgs/Classes_Images/zumba1.jpg","../imgs/Classes_Images/zumba2.jpg","../imgs/Classes_Images/zumba3.jpg"],
+        aerobics:["../imgs/Classes_Images/aerobics1.jpg","../imgs/Classes_Images/aerobics2.jpg","../imgs/Classes_Images/aerobics3.jpg"],
+        ballet:["../imgs/Classes_Images/ballet1.jpg","../imgs/Classes_Images/ballet2.jpg","../imgs/Classes_Images/ballet3.jpg"],
+        basketball:["../imgs/Classes_Images/basketball1.jpg","../imgs/Classes_Images/basketball2.jpg","../imgs/Classes_Images/basketball3.jpg"],
+        boxing:["../imgs/Classes_Images/boxing1.jpg","../imgs/Classes_Images/boxing3.jpg","../imgs/Classes_Images/boxing2.jpg"],
+        crossfit:["../imgs/Classes_Images/crossfit1.jpg","../imgs/Classes_Images/crossfit3.jpg","../imgs/Classes_Images/crossfit2.jpg"],
+        cycling:["../imgs/Classes_Images/cycling1.jpg","../imgs/Classes_Images/cycling2.jpg","../imgs/Classes_Images/cycling3.jpg"],
+        football:["../imgs/Classes_Images/football1.jpg","../imgs/Classes_Images/football2.jpg","../imgs/Classes_Images/football3.jpg"],
+        kickboxing:["../imgs/Classes_Images/kickboxing1.jpg","../imgs/Classes_Images/kickboxing2.jpg","../imgs/Classes_Images/kickboxing3.jpg"],
+        singing:["../imgs/Classes_Images/singing1.jpg","../imgs/Classes_Images/singing3.jpg","../imgs/Classes_Images/singing2.jpg"],
+        weighttraining:["../imgs/Classes_Images/weighttraining1.jpg","../imgs/Classes_Images/weighttraining2.jpg","../imgs/Classes_Images/weighttraining3.jpg"],
+        dance:["../imgs/Classes_Images/dance1.jpg","../imgs/Classes_Images/dance2.jpg","../imgs/Classes_Images/dance3.jpg"]
     }
 
     let newactname=actname.toLowerCase()
