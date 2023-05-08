@@ -1,5 +1,5 @@
 // import baseURL from "./baseURL.js";
-const baseURL = `http://localhost:9876/`;
+const baseURL = `https://rich-plum-barracuda-fez.cyclic.app/`;
 
 let depObj={
     1:"Online",
