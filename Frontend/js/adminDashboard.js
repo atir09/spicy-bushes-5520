@@ -76,6 +76,12 @@ app_btn.addEventListener("click",()=>{
     patient_cont.classList.add("div-hide");
 });
 
+// const hamburger = document.querySelector('.hamburger');
+// const container = document.querySelector('.container');
+
+// hamburger.addEventListener('click', function() {
+//   container.classList.toggle('show-aside');
+// });
 
 //Dashboard Functions 
 getStatus();

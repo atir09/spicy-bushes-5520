@@ -4,7 +4,7 @@ let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 // if(!loggedInUser){    
 //     window.location.assign("../html/login.html");
 // }
-let loggedInUserEmail = "ucannotseeme09@gmail.com"
+let loggedInUserEmail = "ucannotseeme09@gmail.com";
 
 // .......................................Navbar........................................................
 
@@ -13,28 +13,23 @@ let menu = document.querySelector('#menu-btn');
 let navbar = document.querySelector('.header .navbar');
 
 menu.onclick = () => {
-	menu.classList.toggle('fa-times');
-	navbar.classList.toggle('active');
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
 };
 
 window.onscroll = () => {
-	menu.classList.remove('fa-times');
-	navbar.classList.remove('active');
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
 };
 
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// .......................................Trainer Info........................................................
 
-let trainerinfo = document.getElementById("userInfo")
-// trainerinfo.innerText=`Hi, ${loggedInUser.name}`
-
-let totallength;
-
-getAllClassLength()
-
-async function getAllClassLength() {
-	try {
+getAllClass();
+let newData;
+async function getAllClass() {
+    try {
         let dataFetch = await fetch(baseURL + "/class/all", {
             headers: {
                 authorization: `Bearer ${loggedInUserEmail}`
@@ -44,9 +39,8 @@ async function getAllClassLength() {
             let temp = dataFetch.json()
                 .then(res => {
                     newData = res.classes
-					renderClassInfo(newData.length)
-                    renderClasses(res.classes)
-					renderTables()
+                    console.log(newData)
+                    renderAllData(res.classes)
                 })
         } else {
             // alert("Classes Not Fetched")
@@ -59,136 +53,118 @@ async function getAllClassLength() {
     }
 }
 
-function renderClassInfo(totallength) {
-	document.getElementById("total-class").innerText = totallength
+
+function renderAllData(res) {
+    let tablebody = document.querySelector(".responsive-table__body")
+
+    let BodyContent = res.map((el) => {
+        return createRow(el)
+    })
+    tablebody.innerHTML = BodyContent.join(" ")
+    renderTables()
+
 }
 
-
-function renderClasses(res) {
-	let tablebody = document.querySelector(".responsive-table__body")
-
-	let BodyContent = res.map((el) => {
-		return createRow(el)
-	})
-
-	tablebody.innerHTML = BodyContent.join(" ")
-}
 
 function createRow(el) {
-	// let SingleClassUrl="trainerSingleClass.html?id="+el._id
-	const id=el._id
 	return `<tr class="responsive-table__row">
 		<td class="responsive-table__body__text responsive-table__body__text--name" data-id=${el._id} onclick="RedirectClassPage(${el._id})">
-			<img src=${el.activity ? renderImages(el.activity) : "https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"}  class="user-icon">
+			<img src=${el.activity?renderImages(el.activity): "https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"}  class="user-icon">
 			${el.title}
 		</td>
 		<td class="responsive-table__body__text responsive-table__body__text--price">${el.price}</td>
 		<td class="responsive-table__body__text responsive-table__body__text--seats">${el.seatOccupied}/${el.seatTotal}</td>
 		<td class="responsive-table__body__text responsive-table__body__text--date">${el.classDate},${el.classTime}</td>
 		<td class="responsive-table__body__text responsive-table__body__text--venue">${el.venue == "offline" ? el.locationOrLink : el.venue}</td>
-		<td class="responsive-table__body__text responsive-table__body__text--delete"><div class="allbtns"><div class="twobtns">
-		<button class="cancel-btn options" onclick="DeleteClass(event)" data-id=${el._id}>Cancel</button><button class="update-btn options" onclick="updateClass("${el._id}")">Update</button></div>
-		<a href=./trainerSingleClass.html?id=${id}> <button class="detail-btn options" > Details </button></a>
-		</div></td>
-
+		<td class="responsive-table__body__text responsive-table__body__text--delete"><a href=./trainerSingleClass.html?id=${el._id}><button class="details-btn" >Details</button></a></td>
 	</tr>`
 }
 
 
-async function DeleteClass(event) {
-	let classid=event.target.getAttribute("data-id")
-	
-	try {
-		let data = await fetch(baseURL + `/class/delete/${classid}`, {
-			method: "DELETE",
-			headers: {
-				authorization: `Bearer ${loggedInUserEmail}`
-			}
-		})
-		if (data.ok) {
-			// alert("Class Deleted Successfully")
-			swal({ text: "Class Deleted Successfully", icon: "success", button: "ok", timer: 1000 })
-			getAllClassLength()
-		} else {
-			// alert("Class not deleted")
-			swal({ text: "Class not deleted", icon: "error", button: "ok", timer: 1000 })
-		}
-	} catch (error) {
-		// alert("Server not responding");
-		swal({ text: "Server not responding", icon: "error", button: "ok", timer: 1000 })
-		console.log(error.message)
-	}
+
+let joicClassbtn = document.querySelectorAll('.joinclassbutton')
+joicClassbtn.forEach(elem => {
+    elem.addEventListener('click', (event) => {
+        let id = event.target.dataset.id;
+        window.location.assign(`./bookClass.html?id=${id}`)
+    })
+})
+
+
+function checkvenue(venue, locationOrLink) {
+    if (venue === "online") {
+        return 'Online-via Zoom'
+    } else {
+        return `Venue - At ${locationOrLink}`
+    }
 }
 
 
-function RedirectClassPage(id) {
-	window.location.assign(`./trainerSingleClass.html?id=${id}`);
+let searchbar = document.getElementById("searchBox")
+searchbar.addEventListener('input', (event) => {
+    let searchdata = searchalldata(event)
+    renderAllData(searchdata)
+})
+
+function searchalldata(event) {
+    let searchdata = event.target.value
+    // console.log(newData)
+    let temp = newData.filter(function (elem) {
+        let ans = elem.locationOrLink.toLowerCase().includes(searchdata.toLowerCase()) || elem.title.toLowerCase().includes(searchdata.toLowerCase()) || elem.activity.toLowerCase().includes(searchdata.toLowerCase()) || elem.venue.toLowerCase().includes(searchdata.toLowerCase())
+        return ans;
+    })
+    return temp;
 }
 
-// Classes List
+let activitiname = document.getElementById('acttype')
+activitiname.addEventListener("change", (event) => {
+    let searchactivity = searchactivityfun(event.target.value)
+    if (searchactivity) {
+        return renderAllData(searchactivity)
+    } else {
+        allclassescard.innerHTML = `<h2>Data Not Found</h3>`
+    }
+})
 
-renderTables()
-function renderTables() {
-
-	const headTitleName = document.querySelector(
-		".responsive-table__head__title--name"
-	);
-	const headTitleStatus = document.querySelector(
-		".responsive-table__head__title--price"
-	);
-	const headTitleTypes = document.querySelector(
-		".responsive-table__head__title--seats"
-	);
-	const headTitleUpdate = document.querySelector(
-		".responsive-table__head__title--date"
-	);
-	const headTitleCountry = document.querySelector(
-		".responsive-table__head__title--venue"
-	);
-
-	const headTitleDelete = document.querySelector(
-		".responsive-table__head__title--delete"
-	);
-
-	// Select tbody text from Dom
-	const bodyTextName = document.querySelectorAll(
-		".responsive-table__body__text--name"
-	);
-	const bodyTextStatus = document.querySelectorAll(
-		".responsive-table__body__text--price"
-	);
-	const bodyTextTypes = document.querySelectorAll(
-		".responsive-table__body__text--seats"
-	);
-	const bodyTextUpdate = document.querySelectorAll(
-		".responsive-table__body__text--date"
-	);
-	const bodyTextCountry = document.querySelectorAll(
-		".responsive-table__body__text--venue"
-	);
-
-	const bodyTextDelete = document.querySelectorAll(
-		".responsive-table__body__text--delete"
-	);
-
-	// Select all tbody table row from Dom
-	const totalTableBodyRow = document.querySelectorAll(
-		".responsive-table__body .responsive-table__row"
-	);
-
-	// Get thead titles and append those into tbody table data items as a "data-title" attribute
-	for (let i = 0; i < totalTableBodyRow.length; i++) {
-		bodyTextName[i].setAttribute("data-title", headTitleName.innerText);
-		bodyTextStatus[i].setAttribute("data-title", headTitleStatus.innerText);
-		bodyTextTypes[i].setAttribute("data-title", headTitleTypes.innerText);
-		bodyTextUpdate[i].setAttribute("data-title", headTitleUpdate.innerText);
-		bodyTextCountry[i].setAttribute("data-title", headTitleCountry.innerText);
-		// bodyTextDelete[i].setAttribute("data-title", headTitleDelete.innerText);
-
-	}
-
+function searchactivityfun(activity) {
+    if (activity == "all") {
+        getAllClass()
+    } else {
+        let temp = newData.filter(function (elem) {
+            let ans = elem.activity.toLowerCase().includes(activity.toLowerCase()) || elem.venue.toLowerCase().includes(activity.toLowerCase())
+            return ans
+        })
+        return temp;
+    }
 }
 
+let attendacesearch = document.getElementById('atttype')
+attendacesearch.addEventListener("change", (event) => {
+    let searchattendace = searchactivityfun(event.target.value)
+    if (searchattendace) {
+        renderAllData(searchattendace)
+    } else {
+        allclassescard.innerHTML = `<h2>Data Not Found</h3>`
+    }
+})
+
+let pricecomp = document.getElementById('location')
+pricecomp.addEventListener("change", (event) => {
+    let searchlocation = event.target.value
+    if (searchlocation == "low") {
+        let lowtohigh = newData.sort(function (a, b) {
+            return a.price - b.price
+        })
+        renderAllData(lowtohigh)
+    } else if (searchlocation == "high") {
+        let lowtohigh = newData.sort(function (a, b) {
+            return b.price - a.price
+        })
+        renderAllData(lowtohigh)
+    } else {
+        getAllClass()
+    }
+})
 
 
 function renderImages(actname) {
@@ -241,6 +217,74 @@ function getRandomItem(arr) {
     let item = arr[randomIndex];
     return item;
 }
+
+
+
+
+// Classes List
+
+renderTables()
+function renderTables() {
+
+    const headTitleName = document.querySelector(
+        ".responsive-table__head__title--name"
+    );
+    const headTitleStatus = document.querySelector(
+        ".responsive-table__head__title--price"
+    );
+    const headTitleTypes = document.querySelector(
+        ".responsive-table__head__title--seats"
+    );
+    const headTitleUpdate = document.querySelector(
+        ".responsive-table__head__title--date"
+    );
+    const headTitleCountry = document.querySelector(
+        ".responsive-table__head__title--venue"
+    );
+
+    const headTitleDelete = document.querySelector(
+        ".responsive-table__head__title--delete"
+    );
+
+    // Select tbody text from Dom
+    const bodyTextName = document.querySelectorAll(
+        ".responsive-table__body__text--name"
+    );
+    const bodyTextStatus = document.querySelectorAll(
+        ".responsive-table__body__text--price"
+    );
+    const bodyTextTypes = document.querySelectorAll(
+        ".responsive-table__body__text--seats"
+    );
+    const bodyTextUpdate = document.querySelectorAll(
+        ".responsive-table__body__text--date"
+    );
+    const bodyTextCountry = document.querySelectorAll(
+        ".responsive-table__body__text--venue"
+    );
+
+    const bodyTextDelete = document.querySelectorAll(
+        ".responsive-table__body__text--delete"
+    );
+
+    // Select all tbody table row from Dom
+    const totalTableBodyRow = document.querySelectorAll(
+        ".responsive-table__body .responsive-table__row"
+    );
+
+    // Get thead titles and append those into tbody table data items as a "data-title" attribute
+    for (let i = 0; i < totalTableBodyRow.length; i++) {
+        bodyTextName[i].setAttribute("data-title", headTitleName.innerText);
+        bodyTextStatus[i].setAttribute("data-title", headTitleStatus.innerText);
+        bodyTextTypes[i].setAttribute("data-title", headTitleTypes.innerText);
+        bodyTextUpdate[i].setAttribute("data-title", headTitleUpdate.innerText);
+        bodyTextCountry[i].setAttribute("data-title", headTitleCountry.innerText);
+        // bodyTextDelete[i].setAttribute("data-title", headTitleDelete.innerText);
+
+    }
+
+}
+
 
 function logoutFun(){
     sessionStorage.clear();
