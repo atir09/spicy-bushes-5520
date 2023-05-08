@@ -1,7 +1,7 @@
 ## ABOUT THE PROJECT
 <h1> GO FIT </h1>
 <div align="center"  width="55" height="55">
-  <img src="Frontend/imgs/logo/logo.png" alt="html" width="140" height="120"/>
+  <img src="Frontend/imgs/logo/logo.png" alt="html" width="140" height="100"/>
 </div>
 
 
