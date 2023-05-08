@@ -72,7 +72,7 @@ classesRouter.post("/create", async (req,res)=>{
     try{
         let classes = new ClassesModel(payload);
         await classes.save();
-        await UserModel.findByIdAndUpdate({_id:payload.userID},{ $push: { classes: classes._id } });
+        await UserModel.findByIdAndUpdate(payload.userID,{ $push: { classes: classes._id } });
         res.status(200).send({message:"Class created",classes})
     }catch(error){
         res.status(400).send({message:"Something went wrong",error:error.message})
