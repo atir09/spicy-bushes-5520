@@ -2,7 +2,7 @@
 document.querySelector("#create-an-account").addEventListener("click",()=>{
     window.location="signup.html"
 })
-
+let loding_container=document.getElementById("loding_container")
 let google_button = document.querySelector("#login-google-button")
 
 google_button.addEventListener("click", async () => {
@@ -39,7 +39,7 @@ google_button.addEventListener("click", async () => {
        return;
       }
   
-    
+      loding_container.style.display="block";
     fetch("https://rich-plum-barracuda-fez.cyclic.app/user/login", {
         method: "POST",
         headers: {
@@ -49,6 +49,7 @@ google_button.addEventListener("click", async () => {
 
     }).then(res => res.json())
         .then(res => {
+          loding_container.style.display="none";
             console.log(res)
             if(res.OK == false){
               Swal.fire({
@@ -86,7 +87,10 @@ google_button.addEventListener("click", async () => {
            
         })
         .catch((err) => 
-        console.log(err)
+       {
+        console.log(err);
+         loding_container.style.display="none";
+       }
         )
 }
   
