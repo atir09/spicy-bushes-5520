@@ -18,7 +18,7 @@ if (!loggedInUser) {
     window.location.assign("/Frontend/html/login.html");
 }
 let loggedInUserEmail = loggedInUser.email;
-// console.log(loggedInUser)
+console.log(loggedInUser)
 
 
 let totallength;
@@ -199,7 +199,7 @@ function getRandomItem(arr) {
 }
 
 function renderProfileImg() {
-    let arr = ["../Images/Profile_Images/1680420864318.png", "../Images/Profile_Images/1680420887007.png", "../Images/Profile_Images/1680420927232.png", "../Images/Profile_Images/1680420953188.png", "../Images/Profile_Images/1680420980976.png", "../Images/Profile_Images/1680421002568.png", "../Images/Profile_Images/1680421096922.png"]
+    let arr = ["../imgs/Profile_Images/1680420864318.png", "../imgs/Profile_Images/1680420887007.png", "../imgs/Profile_Images/1680420927232.png", "../imgs/Profile_Images/1680420953188.png", "../imgs/Profile_Images/1680420980976.png", "../imgs/Profile_Images/1680421002568.png", "../imgs/Profile_Images/1680421096922.png"]
     // let arr=["https://images.pexels.com/photos/10929340/pexels-photo-10929340.jpeg?auto=compress&cs=tinysrgb&w=600","https://images.pexels.com/photos/5094997/pexels-photo-5094997.jpeg?auto=compress&cs=tinysrgb&w=600","https://images.pexels.com/photos/4761663/pexels-photo-4761663.jpeg?auto=compress&cs=tinysrgb&w=600","https://images.pexels.com/photos/4401806/pexels-photo-4401806.jpeg?auto=compress&cs=tinysrgb&w=600","https://images.pexels.com/photos/16015725/pexels-photo-16015725.jpeg?auto=compress&cs=tinysrgb&w=600"]
 
     let imgLink = getRandomItem(arr)

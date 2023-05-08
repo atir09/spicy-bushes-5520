@@ -107,7 +107,7 @@ function searchalldata(event){
     let searchdata=event.target.value
     // console.log(newData)
    let temp=newData.filter(function(elem){
-    let ans=elem.locationOrLink.toLowerCase().includes(searchdata.toLowerCase())||elem.title.toLowerCase().includes(searchdata.toLowerCase())||elem.activity.toLowerCase().includes(searchdata.toLowerCase())||elem.venue.toLowerCase().includes(searchdata.toLowerCase())
+    let ans=elem.locationOrLink.toLowerCase().includes(searchdata.toLowerCase())||elem.title.toLowerCase().includes(searchdata.toLowerCase())||elem.title.toLowerCase().includes(searchdata.toLowerCase())||elem.venue.toLowerCase().includes(searchdata.toLowerCase())
     return ans;
   })
 return temp;
@@ -128,7 +128,8 @@ function searchactivityfun(activity){
     getAllClass()
    }else{
     let temp=newData.filter(function(elem){
-        let ans=elem.activity.toLowerCase().includes(activity.toLowerCase())||elem.venue.toLowerCase().includes(activity.toLowerCase())
+        console.log(elem)
+        let ans=elem.title.toLowerCase().includes(activity.toLowerCase())||elem.venue.toLowerCase().includes(activity.toLowerCase())
         return ans
     })
     return temp;
