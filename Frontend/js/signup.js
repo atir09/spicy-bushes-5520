@@ -40,6 +40,10 @@ const onSignUp = () => {
                 'User Registered',
                 'success'
               )
+
+              setTimeout(() => {
+                window.location = "login.html"
+              })
         })
         .catch((err) => console.log(err))
 
