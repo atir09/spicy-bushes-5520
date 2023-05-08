@@ -1,10 +1,10 @@
-const baseURL="http://localhost:9876" 
+const baseURL="https://rich-plum-barracuda-fez.cyclic.app" 
 
-// let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
-// if(!loggedInUser){    
-//     window.location.assign("../html/login.html");
-// }
-// let loggedInUserEmail = loggedInUser.email;
+let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
+if(!loggedInUser){    
+    window.location.assign("../html/login.html");
+}
+let loggedInUserEmail = loggedInUser.email;
 
 const urlParams = new URLSearchParams(window.location.search)
 const classId = urlParams.get("id")
@@ -12,7 +12,7 @@ const classId = urlParams.get("id")
 // .....................................................................................................
 
 // const classId="645514f72272571e775560e4"
-const loggedInUserEmail="ucannotseeme09@gmail.com"
+// const loggedInUserEmail="ucannotseeme09@gmail.com"
 
 // .....................................................................................................
 
