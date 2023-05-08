@@ -30,7 +30,7 @@ async function orderClass(obj){
                 // alert(data.message);                          
                 swal({text: data.message, icon: "success", button: "ok", timer:1000})
                 .then(()=>{
-                    window.location.assign("/frontend/pages/userdashboard.html");
+                    window.location.href="userDashboard.html"
                 })
             }
     } catch (error) {
