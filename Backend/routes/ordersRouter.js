@@ -53,7 +53,7 @@ ordersRouter.post("/checkAvailablity", async (req,res)=>{
     // console.log(payload) 
     let classID = payload.classID;
     try{
-        let classes = await ClassesModel.findOne({_id:classID});
+        let classes = await ClassesModel.findById(classID);
         // console.log(classes,classID)
         if(classes.clients.includes(payload.userID)){            
             res.status(401).send({message:"You have already registered for this class"})
