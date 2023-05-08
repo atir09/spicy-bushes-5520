@@ -1,4 +1,4 @@
-const baseURL="http://localhost:9876" 
+const baseURL="https://rich-plum-barracuda-fez.cyclic.app/" 
 
 // let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 // if(!loggedInUser){    
