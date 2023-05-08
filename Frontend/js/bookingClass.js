@@ -118,7 +118,7 @@ async function checkAvailablity(obj){
 next_btn.addEventListener("click",(e)=>{
     // console.log(orderDetailObj)
     sessionStorage.setItem("classDetailsForOrder",JSON.stringify(orderDetailObj));    
-    window.location.assign("/frontend/pages/payment.html");
+    window.location.assign("/Frontend/html/payment.html");
 })
 
 
