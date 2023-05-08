@@ -36,7 +36,7 @@ google_button.addEventListener("click", async () => {
       setTimeout(() => {
         window.location.href = "adminDashboard.html"
        }, 2000)
- 
+       return;
       }
   
     
