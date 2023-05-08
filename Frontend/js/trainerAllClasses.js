@@ -1,10 +1,10 @@
-let baseURL = "http://localhost:9876"
+let baseURL = "https://rich-plum-barracuda-fez.cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
-// if(!loggedInUser){    
-//     window.location.assign("../html/login.html");
-// }
-let loggedInUserEmail = "ucannotseeme09@gmail.com";
+if(!loggedInUser){    
+    window.location.assign("../html/login.html");
+}
+let loggedInUserEmail = loggedInUser.email
 
 // .......................................Navbar........................................................
 

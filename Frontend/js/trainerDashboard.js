@@ -1,10 +1,10 @@
-let baseURL = "http://localhost:9876"
+let baseURL = "https://rich-plum-barracuda-fez.cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
-// if(!loggedInUser){    
-//     window.location.assign("../html/login.html");
-// }
-let loggedInUserEmail = "ucannotseeme09@gmail.com"
+if(!loggedInUser){    
+    window.location.assign("../html/login.html");
+}
+let loggedInUserEmail = loggedInUser.email
 
 // .......................................Navbar........................................................
 
@@ -27,7 +27,7 @@ window.onscroll = () => {
 // .......................................Trainer Info........................................................
 
 let trainerinfo = document.getElementById("userInfo")
-// trainerinfo.innerText=`Hi, ${loggedInUser.name}`
+trainerinfo.innerText=`Hi, ${loggedInUser.name}`
 
 let totallength;
 
@@ -75,7 +75,6 @@ function renderClasses(res) {
 }
 
 function createRow(el) {
-	// let SingleClassUrl="trainerSingleClass.html?id="+el._id
 	const id=el._id
 	return `<tr class="responsive-table__row">
 		<td class="responsive-table__body__text responsive-table__body__text--name" data-id=${el._id} onclick="RedirectClassPage(${el._id})">
@@ -106,15 +105,12 @@ async function DeleteClass(event) {
 			}
 		})
 		if (data.ok) {
-			// alert("Class Deleted Successfully")
 			swal({ text: "Class Deleted Successfully", icon: "success", button: "ok", timer: 1000 })
 			getAllClassLength()
 		} else {
-			// alert("Class not deleted")
 			swal({ text: "Class not deleted", icon: "error", button: "ok", timer: 1000 })
 		}
 	} catch (error) {
-		// alert("Server not responding");
 		swal({ text: "Server not responding", icon: "error", button: "ok", timer: 1000 })
 		console.log(error.message)
 	}
