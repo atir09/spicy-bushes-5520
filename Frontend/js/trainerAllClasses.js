@@ -2,7 +2,7 @@ let baseURL = "https://rich-plum-barracuda-fez.cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if(!loggedInUser){    
-    window.location.assign("../html/login.html");
+    window.location.href="../index.html"
 }
 let loggedInUserEmail = loggedInUser.email
 
@@ -288,5 +288,5 @@ function renderTables() {
 
 function logoutFun(){
     sessionStorage.clear();
-    window.location.assign("../index.html")
+    window.location.href="../index.html"
 }

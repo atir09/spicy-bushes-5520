@@ -2,17 +2,14 @@ const baseURL="https://rich-plum-barracuda-fez.cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if(!loggedInUser){    
-    window.location.assign("../html/login.html");
+    window.location.href="../index.html"
 }
 let loggedInUserEmail = loggedInUser.email;
 
 const urlParams = new URLSearchParams(window.location.search)
 const classId = urlParams.get("id")
 
-// .....................................................................................................
 
-// const classId="645514f72272571e775560e4"
-// const loggedInUserEmail="ucannotseeme09@gmail.com"
 
 // .....................................................................................................
 
@@ -118,6 +115,7 @@ async function  renderAllData(classes,trainerInfo){
                    <h4>Total Seats : ${classes.seatTotal}</h4>
                    <h4>Seats Occupied : ${classes.seatOccupied}</h4>
                    <button class="cancel-btn" onclick="DeleteClass(event)" data-id=${classes._id}>Cancel</button>
+                   <button class="update-btn options" onclick="updateClass(event)"  data-id=${classes._id} >Update</button>
                </div>
               
            </div>
@@ -242,7 +240,7 @@ function rederActDesc(activity){
 
 
 // ........................Delete Class.............................................
-async function DeleteClass(classid){
+async function DeleteClass(event){
     let classid=event.target.getAttribute("data-id")
     try {
         let data=await fetch(baseURL+`/class/delete/${classid}`,{
@@ -267,7 +265,12 @@ async function DeleteClass(classid){
 }
 
 
+function updateClass(event){
+	let classid=event.target.getAttribute("data-id")
+	window.location.href=`updateClass.html?id=${classid}`
+}
+
 function logoutFun(){
     sessionStorage.clear();
-    window.location.assign("../index.html")
+    window.location.href="../index.html"
 }

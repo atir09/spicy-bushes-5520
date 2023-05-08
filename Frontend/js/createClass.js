@@ -1,11 +1,10 @@
 let baseURL="https://rich-plum-barracuda-fez.cyclic.app" 
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
-// if(!loggedInUser){    
-//     window.location.assign("../html/login.html");
-// }
-// let loggedInUserEmail = loggedInUser.email;
-let loggedInUserEmail = "ucannotseeme09@gmail.com";
+if(!loggedInUser){    
+    window.location.href="../index.html"
+}
+let loggedInUserEmail = loggedInUser.email;
 
 
 // .......................................Navbar........................................................
@@ -151,4 +150,11 @@ function getRandomItem(arr) {
    let randomIndex = Math.floor(Math.random() * 2);
    let item = arr[randomIndex];
   return item;
+}
+
+
+
+function logoutFun(){
+    sessionStorage.clear();
+    window.location.href="../index.html"
 }
