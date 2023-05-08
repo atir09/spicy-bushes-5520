@@ -1,7 +1,7 @@
 ## ABOUT THE PROJECT
 <h1> GO FIT </h1>
 <div align="center"  width="55" height="55">
-  <img src="" alt="html" width="120" height="120"/>
+  <img src="Frontend/imgs/logo/logo.png" alt="html" width="120" height="120"/>
 </div>
 
 Medistar Hospital Management System is a web application built using Nodejs,Expressjs,Mongoose,Redis and MongoDB. The system is designed to automate the management of hospital appointments, including the handling of patient records, medical billing, appointment scheduling, and other administrative tasks.
