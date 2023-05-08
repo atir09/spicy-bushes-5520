@@ -1,7 +1,7 @@
 import baseURL from "./baseURL.js"
 let menu = document.querySelector('#menu-btn');
 let navbar = document.querySelector('.header .navbar');
-
+let loding_container=document.getElementById("loding_container")
 menu.onclick = () => {
 	menu.classList.toggle('fa-times');
 	navbar.classList.toggle('active');
@@ -25,6 +25,7 @@ let totallength;
 getClasslength(loggedInUser._id)
 async function getClasslength(id) {
     try {
+        loding_container.style.display="block";
         let fetchingData = await fetch(baseURL + `/class/searchByUserID/${id}`, {
             method: "GET",
             headers: {
@@ -33,6 +34,7 @@ async function getClasslength(id) {
         })
         let temp = await fetchingData.json()
         if (fetchingData.ok) {
+            loding_container.style.display="none";
             totallength = temp.classes.length
             renderUserInfo(totallength)
         } else {
@@ -40,6 +42,7 @@ async function getClasslength(id) {
             alert(fetchingData.message)
         }
     } catch (error) {
+        loding_container.style.display="none";
         alert('Server Error')
         console.log(error.message)
     }
