@@ -144,7 +144,7 @@ GET /user/singletrainer/:id
 | :----: | 
    
 
-[FRONTEND](https://medistar-hospital-301.netlify.app/)
+[FRONTEND]
 
 [BACKEND](https://rich-plum-barracuda-fez.cyclic.app/)
 
