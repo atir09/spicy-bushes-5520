@@ -10,7 +10,7 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
     clientID: "258214568243-pgcqgv1k62hugjirf9qtik8v519hsctm.apps.googleusercontent.com",
     clientSecret: "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",
-    callbackURL: "http://localhost:9876/auth/google/callback"
+    callbackURL: "https://rich-plum-barracuda-fez.cyclic.app/auth/google/callback"
   },
   async function(accessToken, refreshToken, profile, cb) {
     

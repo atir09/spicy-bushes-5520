@@ -6,13 +6,7 @@ document.querySelector("#create-an-account").addEventListener("click",()=>{
 let google_button = document.querySelector("#login-google-button")
 
 google_button.addEventListener("click", async () => {
-    try {
-      const response = await fetch("http://localhost:9876/auth/google");
-      const data = await response.json();
-      console.log(data); 
-    } catch (error) {
-      console.error(error); 
-    }
+ window.location = "http://localhost:9876/auth/google"
   });
 
 
@@ -22,7 +16,27 @@ google_button.addEventListener("click", async () => {
         email: document.getElementById("login-email").value,
         password: document.getElementById("login-password").value
     }
-    fetch("http://localhost:9876/user/login", {
+    if(payload.email == "" || payload.password == ""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please fill all the details....',
+  
+      })
+  
+       return;
+    }
+
+    if(payload.email == "admin@gmail.com" || payload.pass == "admin"){
+       
+      setTimeout(() => {
+        window.location.href = "adminDashboard.html"
+    }, 2000)
+ 
+      }
+  
+    
+    fetch("https://rich-plum-barracuda-fez.cyclic.app/user/login", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -37,10 +51,14 @@ google_button.addEventListener("click", async () => {
                 'You Loggged in',
                 'success'
               )
+
+              localStorage.setItem({
+                "email": email
+              })
        
-            //    setTimeout(() => {
-            //     window.location.href = "account.html"
-            // }, 2000)
+               setTimeout(() => {
+                window.location.href = "index.html"
+            }, 2000)
          
            
         })
