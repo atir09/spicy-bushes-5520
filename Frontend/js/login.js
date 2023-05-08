@@ -40,7 +40,7 @@ google_button.addEventListener("click", async () => {
       }
   
     
-    fetch("http://localhost:9876/user/login", {
+    fetch("https://rich-plum-barracuda-fez.cyclic.app/user/login", {
         method: "POST",
         headers: {
             "Content-type": "application/json"

@@ -2,7 +2,7 @@ let baseURL = "https://rich-plum-barracuda-fez.cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if(!loggedInUser){    
-    window.location.assign("../html/login.html");
+    window.location.href="../index.html"
 }
 let loggedInUserEmail = loggedInUser.email
 
@@ -86,13 +86,18 @@ function createRow(el) {
 		<td class="responsive-table__body__text responsive-table__body__text--date">${el.classDate},${el.classTime}</td>
 		<td class="responsive-table__body__text responsive-table__body__text--venue">${el.venue == "offline" ? el.locationOrLink : el.venue}</td>
 		<td class="responsive-table__body__text responsive-table__body__text--delete"><div class="allbtns"><div class="twobtns">
-		<button class="cancel-btn options" onclick="DeleteClass(event)" data-id=${el._id}>Cancel</button><button class="update-btn options" onclick="updateClass("${el._id}")">Update</button></div>
+		<button class="cancel-btn options" onclick="DeleteClass(event)" data-id=${el._id}>Cancel</button><button class="update-btn options" onclick="updateClass(event)"  data-id=${el._id} >Update</button></div>
 		<a href=./trainerSingleClass.html?id=${id}> <button class="detail-btn options" > Details </button></a>
 		</div></td>
 
 	</tr>`
 }
 
+
+function updateClass(event){
+	let classid=event.target.getAttribute("data-id")
+	window.location.href=`updateClass.html?id=${classid}`
+}
 
 async function DeleteClass(event) {
 	let classid=event.target.getAttribute("data-id")
@@ -240,5 +245,5 @@ function getRandomItem(arr) {
 
 function logoutFun(){
     sessionStorage.clear();
-    window.location.assign("../index.html")
+    window.location.href="../index.html"
 }
