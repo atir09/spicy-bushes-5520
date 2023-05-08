@@ -2,11 +2,12 @@ let url="https://rich-plum-barracuda-fez.cyclic.app/"
 
 let boxContainer=document.querySelector("#trainers .box-container")
 
-
+let loding_container=document.getElementById("loding_container")
 
 
 async function getTrainerData(){
     try {
+      
       let res= await fetch(`${url}/alltrainer`)
       let data =await res.json()
       console.log(data)
