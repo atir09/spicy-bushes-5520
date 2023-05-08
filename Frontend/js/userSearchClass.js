@@ -55,7 +55,7 @@ function renderAllData(data){
    
 <div class="information">
 <div class="second">
-    <img src=${renderImages(elem.title)} alt=${elem.title} class="classimages"></img>
+    <img src=${renderImages(elem.activity)} alt=${elem.activity} class="classimages"></img>
     <h4> <a href=./classDetails.html?id=${elem._id} >${elem.title}</a></h4>
     </div>
    <div class="third">
