@@ -5,7 +5,7 @@ if (!loggedInUser) {
   window.location.href="login.html"
 }
 let loggedInUserEmail = loggedInUser.email;
-
+let loding_container=document.getElementById("loding_container")
 let classDetailsForOrder = JSON.parse(sessionStorage.getItem("classDetailsForOrder")) || {}; 
 document.getElementById("price").innerText = "₹" + (classDetailsForOrder.price||0);
 
@@ -13,7 +13,8 @@ document.getElementById("price").innerText = "₹" + (classDetailsForOrder.price
 async function orderClass(obj){
     // console.log(obj)
     try {
-        let url = baseURL+"/order/create"
+        let url = baseURL+"/order/create";
+        loding_container.style.display="block";
         let res = await fetch(url,{ 
             method:"POST",
             headers: {
@@ -23,6 +24,7 @@ async function orderClass(obj){
             body:JSON.stringify(obj)
         });
             let data = await res.json();
+            loding_container.style.display="none";
             if(res.status==400){
                 alert(data.message)
                 console.log(data.error)
@@ -35,6 +37,7 @@ async function orderClass(obj){
             }
     } catch (error) {
       // alert("Server not responding");
+      loding_container.style.display="none";
       swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
         console.log(error.message);
     }

@@ -1,6 +1,7 @@
 import baseURL from "./baseURL.js"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
+let loding_container=document.getElementById("loding_container")
 let logoimg_nav=document.getElementById("logoimg_nav")
 logoimg_nav.addEventListener("click",()=>{
     window.location.assign("/Frontend/html/userDashboard.html");
@@ -28,6 +29,7 @@ const classId = urlParams.get("id");
 getClass(classId)
 async function getClass(classId){
     try {
+      loding_container.style.display="block";
         let res = await fetch(`${baseURL}class/${classId}`,{
             method:"GET",
             headers: {
@@ -35,6 +37,7 @@ async function getClass(classId){
             }
         });
         let data = await res.json();
+        loding_container.style.display="none";
         if(res.status==400){
             swal({text: data.message, icon: "error", button: "ok", timer:1000})
             // console.log(data.error);
@@ -42,7 +45,8 @@ async function getClass(classId){
           // console.log(data) 
             displayDataInForm(data.classes);        
         }
-    } catch (error) {     
+    } catch (error) {   
+      loding_container.style.display="none";  
         swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
         // console.log(error.message)
     }
@@ -87,6 +91,7 @@ form.addEventListener("submit",(e)=>{
 async function checkAvailablity(obj){
     console.log(obj)
     try {
+      loding_container.style.display="block";
         let url = baseURL+"order/checkAvailablity"
         let res = await fetch(url,{ 
             method:"POST",
@@ -97,6 +102,7 @@ async function checkAvailablity(obj){
             body:JSON.stringify(obj)
         });
             let data = await res.json();
+            loding_container.style.display="none";
             if(res.status==400){
                 // alert(data.message)
                 swal({text: data.message, icon: "error", button: "ok", timer:1000})
@@ -114,6 +120,7 @@ async function checkAvailablity(obj){
                 })
             }
     } catch (error) {
+      loding_container.style.display="none";
         // alert("Server not responding");        
         swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
         console.log(error.message);
