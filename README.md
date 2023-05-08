@@ -2,9 +2,10 @@
 <h1> GO FIT </h1>
 <div align="center"  width="55" height="55">
   <img src="Frontend/imgs/logo/logo.png" alt="html" width="140" height="100"/>
+  <p>Welcome to Go Fit, the ultimate sports and wellness app designed to help users and certified fitness trainers to get together and work on the fitness goal on one platform.</p>
+  <br>
+  <p>Our system provides a user-friendly platform that enables users to browse, book, and cancel fitness classes with ease. Our platform empowers trainers to create classes with comprehensive information such as class time, venue, date, and more. Additionally, all-encompassing administrative interface that enables authorized personnel to perform a wide range of operations, including Create, Read, Update, and Delete (CRUD) functions. </p>
 </div>
-
-
 
 ## TECH STACKS USED
 
