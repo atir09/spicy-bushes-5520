@@ -1,5 +1,4 @@
-// const baseURL="https://stormy-flannel-shirt-lion-cyclic.app"
-const baseURL="http://localhost:9876/"
+import baseURL from "./baseURL.js"
 let menu = document.querySelector('#menu-btn');
 let navbar = document.querySelector('.header .navbar');
 
@@ -15,9 +14,9 @@ window.onscroll = () => {
 
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
-// if (!loggedInUser) {
-//     window.location.assign("/frontend/pages/login.html");
-// }
+if (!loggedInUser) {
+    window.location.assign("/Frontend/html/login.html");
+}
 let loggedInUserEmail = loggedInUser.email;
 // console.log(loggedInUser)
 
