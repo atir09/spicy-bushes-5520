@@ -9,7 +9,7 @@ let loggedInUserEmail = loggedInUser.email;
 const urlParams = new URLSearchParams(window.location.search)
 const classId = urlParams.get("id")
 
-
+let loding_container=document.getElementById("loding_container")
 // .......................................Navbar........................................................
 
 
@@ -48,6 +48,7 @@ let left_img_part = document.querySelector("#left_img_part img");
 getAllClass(classId)
 async function getAllClass(classId) {
     try {
+        loding_container.style.display="block";
         let dataFetch = await fetch(`${baseURL}/class/${classId}`, {
             headers: {
                 authorization: `Bearer ${loggedInUserEmail}`
@@ -56,13 +57,15 @@ async function getAllClass(classId) {
         if (dataFetch.ok) {
             let temp = dataFetch.json()
                 .then(res => {
+                    loding_container.style.display="none";
                     renderValue(res.classes)
                 })
         } else {
-            alert("Classes Not Fetched")
+            loding_container.style.display="none";
             swal({ text: "Classes Not Fetched", icon: "error", button: "ok", timer: 1000 })
         }
     } catch (error) {
+        loding_container.style.display="none";
         console.log(error)
     }
 }
@@ -125,6 +128,7 @@ form.addEventListener("submit", (e) => {
 async function classUpdateInDB(obj) {
     try {
         let url = baseURL + `/class/update/${classId}`
+        loding_container.style.display="block";
         let res = await fetch(url, {
             method: "PATCH",
             headers: {
@@ -135,11 +139,13 @@ async function classUpdateInDB(obj) {
         });
         let data = await res.json();
         if (res.status == 400) {
-            // alert(data.message)            
+            // alert(data.message)   
+            loding_container.style.display="none";         
             swal({ text: data.message, icon: "error", button: "ok", timer: 1000 })
             console.log(data.error)
         } else {
             // alert(data.message);
+            loding_container.style.display="none";
             swal({ text: data.message, icon: "success", button: "ok", timer: 1000 })
                 .then(() => {
                     window.location.assign("../html/trainerDashboard.html");
@@ -148,6 +154,7 @@ async function classUpdateInDB(obj) {
         }
     } catch (error) {
         // alert("Server not responding");
+        loding_container.style.display="none";
         swal({ text: "Server not responding", icon: "error", button: "ok", timer: 1000 })
         console.log(error.message)
     }

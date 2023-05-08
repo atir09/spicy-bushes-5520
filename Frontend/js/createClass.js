@@ -6,6 +6,8 @@ if(!loggedInUser){
 }
 let loggedInUserEmail = loggedInUser.email;
 
+let loding_container=document.getElementById("loding_container")
+
 
 // .......................................Navbar........................................................
 
@@ -92,6 +94,7 @@ form.addEventListener("submit",(e)=>{
 async function classSaveInDB(obj){
     try {
         let url = baseURL+"/class/create"
+        loding_container.style.display="block";
         let res = await fetch(url,{
             method:"POST",
             headers: {
@@ -102,11 +105,13 @@ async function classSaveInDB(obj){
         });
         let data = await res.json();
         if(res.status==400){
-            // alert(data.message)            
+            // alert(data.message) 
+            loding_container.style.display="none";           
             swal({text: data.message, icon: "error", button: "ok", timer:1000})
             console.log(data.error)
         }else{
             // alert(data.message);
+            loding_container.style.display="none";
             swal({text: data.message, icon: "success", button: "ok", timer:1000})
             .then(()=>{ 
                 window.location.assign("../html/createClass.html");
@@ -115,6 +120,7 @@ async function classSaveInDB(obj){
         }
     } catch (error) {
         // alert("Server not responding");
+        loding_container.style.display="none";
         swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
         console.log(error.message)
     }
