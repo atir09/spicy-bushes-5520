@@ -1,15 +1,17 @@
-let url="https://good-tan-jay.cyclic.app/"
+let url="https://rich-plum-barracuda-fez.cyclic.app/"
 
 let boxContainer=document.querySelector("#trainers .box-container")
 
-
+let loding_container=document.getElementById("loding_container")
 
 
 async function getTrainerData(){
     try {
-      let res= await fetch(`${url}/trainer`)
+      
+      let res= await fetch(`${url}/alltrainer`)
       let data =await res.json()
-      displayTrainerData(data)
+      console.log(data)
+      displayTrainerData(data.trainers)
       
     } catch (error) {
         console.log(error)
@@ -24,7 +26,7 @@ async function getTrainerData(){
       ${ data.map((elem)=>{
         return `
         <div class="box">
-            <img src=${elem.image} alt="">
+            <img src=https://img.freepik.com/free-photo/young-sports-people-training-morning-gym_1157-28954.jpg alt="">
             <div class="content">
                 <span>expert trainer</span>
                 <h3>${elem.name}</h3>

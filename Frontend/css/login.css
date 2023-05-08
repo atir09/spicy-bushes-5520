@@ -3,7 +3,34 @@
     padding: 1%;
     margin: -3%;
 }
-
+/* ------------css for loding animation------------- */
+#loding_container{
+   display: none;
+   transition: ease-in-out 0.5s;
+ }
+ #loding_div{
+   position: fixed;
+   top: 200px;
+   left: 20%;
+   right: 20%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   z-index: 500;
+ }
+ #loding_div>img{
+   width: 120px;
+ }
+ #loding_div>h2{
+   text-align: center;
+   color: #ee0606;
+   font-size: 35px;
+   font-weight: bolder;
+ }
+ 
+ 
+ /* ------------css for loding animation Ended here ------------ */
 
 #logo {
     width: 20%;
@@ -95,14 +122,13 @@
  }
  
 
-  @media screen and (min-width: 600) and (max-width: 900px) {
-    #login-container {
+  @media screen and (min-width: 300) and (max-width: 900px) {
+     #login-container {
         background-image: url("https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=775&q=80"); 
         padding: 1%;
         margin: -3%;
     }
-    
-    
+
     #logo {
         width: 100%;
         height: 4vh;
@@ -194,7 +220,7 @@
    
    }
    
-   @media screen and (max-width: 450px) {
+   @media screen and (min-width: 100)and (max-width: 450px) {
     #login-container {
         background-image: url("https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=775&q=80"); 
         padding: 1%;

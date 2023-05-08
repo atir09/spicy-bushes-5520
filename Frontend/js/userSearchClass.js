@@ -200,3 +200,13 @@ function getRandomItem(arr) {
    let item = arr[randomIndex];
   return item;
 }
+
+// showing user's name on nav bar
+let user_name=document.getElementById("user_name");
+
+user_name.innerText=loggedInUser.name;
+
+function logoutFun(){
+    sessionStorage.clear();
+    window.location.href="../index.html"
+}

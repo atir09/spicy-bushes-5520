@@ -1,5 +1,5 @@
 // import baseURL from "./baseURL.js";
-const baseURL = `http://localhost:9876/`;
+const baseURL = `https://rich-plum-barracuda-fez.cyclic.app/`;
 
 let depObj={
     1:"Online",
@@ -76,6 +76,12 @@ app_btn.addEventListener("click",()=>{
     patient_cont.classList.add("div-hide");
 });
 
+// const hamburger = document.querySelector('.hamburger');
+// const container = document.querySelector('.container');
+
+// hamburger.addEventListener('click', function() {
+//   container.classList.toggle('show-aside');
+// });
 
 //Dashboard Functions 
 getStatus();
@@ -214,6 +220,76 @@ function renderRecentApps(elem1,elem2,elem3){
 `
 }
 
+//Get Trainer
+async function gettrainers(){
+    let id = document.getElementById("trainer").value;
+
+    try{
+        let res=await fetch(baseURL+`user/singletrainer/${id}`,{
+            method:"GET",
+            headers:{
+				"content-type": "application/json"
+			},
+        });
+        console.log(res);
+        if(res.ok){
+            let data=await res.json();
+            console.log(data)
+
+            let updateform = document.getElementById("updateform");
+            
+        updateform.name.value=data.trainer.name
+        updateform.email.value=data.trainer.email
+        updateform.phone.value=data.trainer.phone
+        updateform.country.value=data.trainer.country
+    
+        }
+    }catch(err){
+        swal("","Error 404","warning");
+    }  
+}
+
+//Update Trainer
+async function updatetrainer(event){
+    event.preventDefault();
+    let id = document.getElementById("trainer").value;
+    let updateform = document.getElementById("updateform");
+    let docObj={
+        name: updateform.name.value,
+        email: updateform.email.value,
+        phone: updateform.phone.value,
+        country: updateform.country.value,
+    }
+    try{
+        let res=await fetch(baseURL+`user/update/${id}`,{
+            method:"PATCH",
+            headers:{
+                "content-type": "application/json"
+            },
+            body : JSON.stringify(docObj)
+        });
+        // console.log(res);
+        if(res.ok){
+            let data=await res.json();
+            console.log(data)
+            swal("", `${data.trainer.name} detail updated`, "success")
+            .then(function() {
+                recentDocs();
+            });
+        }else{
+            let data=await res.json(); 
+            swal("",`${data.message}`,"warning");
+        }
+    }catch(err){
+        swal("", `Trainer Detail updated`, "success")
+        .then(function() {
+                recentDocs();
+            });
+    }     
+}
+    
+
+
 //Trainer Function
 function renderDocsData(arr){
     let docs_tbody=document.getElementById("doc-render");
@@ -254,14 +330,17 @@ let docForm=document.querySelector(".create-doc form");
 docForm.addEventListener("submit",(e)=>{
     e.preventDefault();
     const submit=confirm("Confirm submission?");
-    if(submit){addDoc();}
+    if(submit){
+        addDoc();
+    }
 })
 
 async function addDoc(){
     let docObj={
-        doctorName: docForm.name.value,
+        name: docForm.name.value,
         email: docForm.email.value,
-        phoneNo: docForm.phone.value,
+        password: docForm.password.value,
+        phone: docForm.phone.value,
         country: docForm.country.value,
         role: docForm.role.value
     }
@@ -270,14 +349,17 @@ async function addDoc(){
         let res=await fetch(baseURL+`user/register`,{
             method:"POST",
             headers:{
+                
 				"content-type": "application/json"
 			},
+            
             body: JSON.stringify(docObj)
         });
+        // console.log(res);
         if(res.ok){
             let data=await res.json();
-            console.log(data)
-            swal("", `${data.msg}`, "success").then(function() {
+            // console.log(data.message)
+            swal("", `${data.user.name}`, "success").then(function() {
                 recentDocs();
                 });
             }else{
@@ -319,6 +401,24 @@ async function deleteUser(id){
         if(res.ok){
             let data=await res.json();
             recentDocs();
+        }
+    }catch(err){
+        console.log(err);
+    }    
+}
+
+//Delete Classes
+async function deleteClass(id){
+    try{
+        let res=await fetch(baseURL+`class/delete/${id}`,{
+            method:"DELETE",
+            headers:{
+				"content-type": "application/json"
+			}
+        });
+        if(res.ok){
+            let data=await res.json();
+            recentApps();
         }
     }catch(err){
         console.log(err);
@@ -439,7 +539,7 @@ function renderAppsData(arr){
         del.style.color="red";
         del.addEventListener("click",(e)=>{
             swal("", "Confirm Delete?", "info").then(function() {
-                deleteDoc(elem._id);
+                deleteClass(elem._id);
                 });
         })
 
@@ -500,9 +600,8 @@ venueFilterTag.addEventListener("change", async (e) => {
 
 //Logout
 document.getElementById("menu-logout").addEventListener("click",(e)=>{
-    localStorage.removeItem("admin");
     swal("", `Logged out successfully`, "success").then(function(){
-        window.location.href="./index.html";
+        window.location.href="./login.html";
     });
 })
 

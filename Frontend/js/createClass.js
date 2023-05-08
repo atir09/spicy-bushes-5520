@@ -1,10 +1,11 @@
-let baseURL="http://localhost:9876" 
+let baseURL="https://rich-plum-barracuda-fez.cyclic.app" 
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
-// if(!loggedInUser){    
-//     window.location.assign("/frontend/pages/login.html");
-// }
-// let loggedInUserEmail = loggedInUser.email;
+if(!loggedInUser){    
+    window.location.href="../index.html"
+}
+let loggedInUserEmail = loggedInUser.email;
+
 
 // .......................................Navbar........................................................
 
@@ -22,7 +23,7 @@ window.onscroll = () => {
 	navbar.classList.remove('active');
 };
 
-
+document.getElementById("user_name").innerText=loggedInUser.name
 
 // ................................................Create Class Form...................................................................
 
@@ -149,4 +150,11 @@ function getRandomItem(arr) {
    let randomIndex = Math.floor(Math.random() * 2);
    let item = arr[randomIndex];
   return item;
+}
+
+
+
+function logoutFun(){
+    sessionStorage.clear();
+    window.location.href="../index.html"
 }

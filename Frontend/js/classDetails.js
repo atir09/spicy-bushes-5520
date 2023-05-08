@@ -2,18 +2,21 @@ const baseURL="https://rich-plum-barracuda-fez.cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if(!loggedInUser){    
-    window.location.href="../index.html"
+    window.location.assign("../html/login.html");
 }
 let loggedInUserEmail = loggedInUser.email;
 
 const urlParams = new URLSearchParams(window.location.search)
 const classId = urlParams.get("id")
 
+// .....................................................................................................
 
+// const classId="645514f72272571e775560e4"
+// const loggedInUserEmail="ucannotseeme09@gmail.com"
 
 // .....................................................................................................
 
-document.getElementById("user_name").innerText=loggedInUser.name
+
 
 
 // .......................................Navbar........................................................
@@ -113,9 +116,7 @@ async function  renderAllData(classes,trainerInfo){
                    <h4 id="linkH4Key">Link/Location : ${classes.locationOrLink}</h4>
                    <h4>Duration: ${classes.duration}</h4>
                    <h4>Total Seats : ${classes.seatTotal}</h4>
-                   <h4>Seats Occupied : ${classes.seatOccupied}</h4>
-                   <button class="cancel-btn" onclick="DeleteClass(event)" data-id=${classes._id}>Cancel</button>
-                   <button class="update-btn options" onclick="updateClass(event)"  data-id=${classes._id} >Update</button>
+                   <h4>Seats Occupied : ${classes.seatOccupied}</h4>              
                </div>
               
            </div>
@@ -240,8 +241,7 @@ function rederActDesc(activity){
 
 
 // ........................Delete Class.............................................
-async function DeleteClass(event){
-    let classid=event.target.getAttribute("data-id")
+async function DeleteClass(classid){
     try {
         let data=await fetch(baseURL+`/class/delete/${classid}`,{
             method:"DELETE",
@@ -265,10 +265,15 @@ async function DeleteClass(event){
 }
 
 
-function updateClass(event){
-	let classid=event.target.getAttribute("data-id")
-	window.location.href=`updateClass.html?id=${classid}`
+function logoutFun(){
+    sessionStorage.clear();
+    window.location.assign("../index.html")
 }
+
+// showing user's name on nav bar
+let user_name=document.getElementById("user_name");
+
+user_name.innerText=loggedInUser.name;
 
 function logoutFun(){
     sessionStorage.clear();

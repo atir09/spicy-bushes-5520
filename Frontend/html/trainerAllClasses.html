@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go-Fit | Trainer Dashboard</title>
+    <title>Go-Fit | Trainer All Classes</title>
     <link rel="icon" href="../imgs/logo/logo.png" />
 
     <!-- font awesome cdn link  -->
@@ -14,7 +14,7 @@
     <!-- <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" /> -->
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="../css/trainerDashboard.css">
+    <link rel="stylesheet" href="../css/trainerAllClasses.css">
 
 
 </head>
@@ -41,61 +41,79 @@
     </header>
 
 
-    <section id="dashboard">
+    <section id="content">
         <div id="title">
             <h2>Trainer's Dashboard</h2>
         </div>
+        <div id="searchclass">
+            <div id="filterinfo">
 
-        <div id="Info">
-            <!-- <div id="clientname">
-                <div id="profimgdiv">
-                    <img src=${renderProfileImg()} alt="" id="profileimg">
+                <div id="activitydiv">
+                    <p>Activity </p>
+                    <select name="activity" id="acttype">
+                        <option value="all">All Activities</option>
+                        <option value="aerobics">Aerobics</option>
+                        <option value="ballet">Ballet</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="boxing">Boxing</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="crossFit">Cross Fit</option>
+                        <option value="cycling">Cycling</option>
+                        <option value="dance">Dance</option>
+                        <option value="football">Football</option>
+                        <option value="kickBoxing">Kick Boxing</option>
+                        <option value="running">Running</option>
+                        <option value="singing">Singing</option>
+                        <option value="swimming">Swimming</option>
+                        <option value="weightTraining">Weight Training</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="zumba">Zumba</option>
+                    </select>
                 </div>
-                <div id="clientnamediv">
-                    <p>Hi, Atir</p>
-                    <p>Welcome back - Let's get Started! </p>
+                <div id="attendancediv">
+                    <p>Attendence </p>
+                    <select name="Attendence" id="atttype">
+                        <option value="all">All Classes</option>
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                    </select>
                 </div>
+                <div id="locationdiv">
+                    <p>By Price</p>
+                    <select name="location" id="location">
+                        <option value="all">All Classes</option>
+                        <option value="low">Low to High</option>
+                        <option value="high">High to Low</option>
+                    </select>
+                </div>
+    
             </div>
-            <div id="clineclass">
-                <div id="notclassdiv">
-                    <div id="notclassdiv">
-                        <p class="notclassrender">Total classes created by you is ${count}.</p>
-                        <p class="notclassrender">For create more class <a id='searchanc'
-                                href="./createClass.html">click here.</a></p>
-                    </div>
-                </div>
-            </div> -->
-
-
-            <div class="cardBox">
-
-
-                <div class="card">
-                    <div id="profimgdiv" >
-                        <img src="https://media.istockphoto.com/id/1397556857/vector/avatar-13.jpg?s=612x612&w=0&k=20&c=n4kOY_OEVVIMkiCNOnFbCxM0yQBiKVea-ylQG62JErI=" alt="" id="profileimg">
-                        <div id="clientnamediv">
-                            <p id="userInfo">Hi,</p>
-                            <p>Welcome back - Let's get Started! </p>
-                        </div>
-                    </div>
+            <div id="searchdiv">
+                <div id="mainsearchdiv">
+                    <p>Tell us what you're looking for</p>
+                    <input type="text" placeholder="Search for class here..." id="searchBox">
                     
                 </div>
-
-
-                <div class="card">
-                    <div>
-                        <div class="numbers" id="total-class">0</div>
-                        <div class="cardName">My classes</div>
-                    </div>
-                    <div>
-                        <button class="btn" >Create New Class</button>
-                    </div>
-                </div>
+                <button id="mainsearchbutton" >SEARCH</button>
             </div>
-
         </div>
 
+        
+
+        <!-- <div id="allclassediv">
+            <h3 id="allclasstitle">All Classes</h3>
+
+            <div id="cardcontainer">
+                
+               
+            </div>
+            
+        </div> -->
+        
+
+    </div>
     </section>
+
 
 
 
@@ -120,9 +138,7 @@
 				<th class="responsive-table__head__title responsive-table__head__title--seats">Seats</th>
 				<th class="responsive-table__head__title responsive-table__head__title--date">Date/Time</th>
 				<th class="responsive-table__head__title responsive-table__head__title--venue">Venue</th>
-                <th class="responsive-table__head__title responsive-table__head__title--delete">Options</th>
-                <!-- <th class="responsive-table__head__title responsive-table__head__title--update">Update</th>
-                <th class="responsive-table__head__title responsive-table__head__title--details">Details</th> -->
+                <th class="responsive-table__head__title responsive-table__head__title--delete">Cancel</th>
 			</tr>
 		</thead>
 		<!-- Responsive Table Body Section -->
@@ -147,8 +163,6 @@
 				<td class="responsive-table__body__text responsive-table__body__text--date"></td>
 				<td class="responsive-table__body__text responsive-table__body__text--venue"></td>
 				<td class="responsive-table__body__text responsive-table__body__text--delete"><button class="cancel-btn" >Cancel</button></td>
-                
-                
 			</tr>
 		</tbody>
 	</table>
@@ -216,7 +230,7 @@
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
     <!-- custom js file link  -->
-    <script src="../js/trainerDashboard.js"></script>
+    <script src="../js/trainerAllClasses.js"></script>
 
 
 </body>

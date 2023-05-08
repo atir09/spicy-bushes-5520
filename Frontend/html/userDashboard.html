@@ -8,14 +8,13 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="shortcut icon" href="../Images/favicons/favicon6.ico" type="image/x-icon">
     <link rel="icon" href="../Images/favicons/favicon6.ico" type="image/x-icon">
-    <title>Workout</title>
+    <title>Go-Fit | Workout</title>
+    <link rel="icon" href="../imgs/logo/logo.png" />
     
     <!-- <link rel="stylesheet" href="../styles/index.css"> -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Fito - Fitness Bootstrap Admin Dashboard</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <link rel="stylesheet" href="vendor/chartist/css/chartist.min.css">
     <link href="../vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="../vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -39,10 +38,10 @@
           <div id="menu-btn" class="fas fa-bars"></div>
   
           <nav class="navbar">
-              <a href="../index.html">home</a>
+              <a href="./userDashboard.html" id="user_name"></a>
               <a href="#about">about</a>
               <a href="./userSearchClass.html">Classes</a>
-              <a href="./Login.html">Logout</a>
+              <a href="../index.html" onclick="logoutFun()">Log out</a>
           </nav>
   
       </header>

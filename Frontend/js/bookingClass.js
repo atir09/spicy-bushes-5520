@@ -1,6 +1,7 @@
 import baseURL from "./baseURL.js"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
+let loding_container=document.getElementById("loding_container")
 let logoimg_nav=document.getElementById("logoimg_nav")
 logoimg_nav.addEventListener("click",()=>{
     window.location.assign("/Frontend/html/userDashboard.html");
@@ -11,6 +12,8 @@ if(!loggedInUser){
 }
 let loggedInUserEmail = loggedInUser.email;
 let orderDetailObj={};
+// console.log("log",loggedInUser._id)
+
 
 let form = document.querySelector("form");
 let checkAvailablity_btn = document.querySelector(".checkAvailablity_btn");
@@ -26,22 +29,26 @@ const classId = urlParams.get("id");
 getClass(classId)
 async function getClass(classId){
     try {
-        let res = await fetch(`${baseURL}/class/${classId}`,{
+      loding_container.style.display="block";
+        let res = await fetch(`${baseURL}class/${classId}`,{
             method:"GET",
             headers: {
               authorization:`Bearer ${loggedInUserEmail}`
             }
         });
         let data = await res.json();
+        loding_container.style.display="none";
         if(res.status==400){
             swal({text: data.message, icon: "error", button: "ok", timer:1000})
-            console.log(data.error);
-        }else{    
+            // console.log(data.error);
+        }else{   
+          // console.log(data) 
             displayDataInForm(data.classes);        
         }
-    } catch (error) {     
+    } catch (error) {   
+      loding_container.style.display="none";  
         swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
-        console.log(error.message)
+        // console.log(error.message)
     }
 }
 
@@ -73,16 +80,19 @@ form.addEventListener("submit",(e)=>{
     let obj = {
         price: form.price.value,  
         selectedDate_Time:form.date_time.value,
-        classID:classId
+        classID:classId,
+        userID:loggedInUser._id
     }
+    // console.log(obj)
     checkAvailablity(obj);
 })
 
 
 async function checkAvailablity(obj){
-    // console.log(obj)
+    console.log(obj)
     try {
-        let url = baseURL+"/order/checkAvailablity"
+      loding_container.style.display="block";
+        let url = baseURL+"order/checkAvailablity"
         let res = await fetch(url,{ 
             method:"POST",
             headers: {
@@ -92,6 +102,7 @@ async function checkAvailablity(obj){
             body:JSON.stringify(obj)
         });
             let data = await res.json();
+            loding_container.style.display="none";
             if(res.status==400){
                 // alert(data.message)
                 swal({text: data.message, icon: "error", button: "ok", timer:1000})
@@ -109,6 +120,7 @@ async function checkAvailablity(obj){
                 })
             }
     } catch (error) {
+      loding_container.style.display="none";
         // alert("Server not responding");        
         swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
         console.log(error.message);
@@ -118,7 +130,7 @@ async function checkAvailablity(obj){
 next_btn.addEventListener("click",(e)=>{
     // console.log(orderDetailObj)
     sessionStorage.setItem("classDetailsForOrder",JSON.stringify(orderDetailObj));    
-    window.location.assign("/frontend/pages/payment.html");
+    window.location.assign("/Frontend/html/payment.html");
 })
 
 

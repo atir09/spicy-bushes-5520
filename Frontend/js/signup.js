@@ -15,8 +15,18 @@ const onSignUp = () => {
         role:document.querySelector("#role").value
     }
     console.log(payload)
+    if(payload.name == "" || payload.email == "" || payload.password == "" || payload.country == "" || payload.sex == "" || payload.role == ""){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please fill all the details....',
+    
+        })
+    
+         return;
+      }
 
-    fetch("http://localhost:9876/user/register", {
+    fetch("https://rich-plum-barracuda-fez.cyclic.app/user/register", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -30,6 +40,10 @@ const onSignUp = () => {
                 'User Registered',
                 'success'
               )
+
+              setTimeout(() => {
+                window.location = "login.html"
+              })
         })
         .catch((err) => console.log(err))
 

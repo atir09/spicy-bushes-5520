@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-    <link rel="icon" href="../images/logo.png" />
+    <title>Go-Fit | Admin Dashboard</title>
+    <link rel="icon" href="../imgs/logo/logo.png" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../css/adminDashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/adminDashboard.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
   </head>
   <body>
@@ -30,8 +31,7 @@
         </div>
         <div class="profile">
           <div class="profile-photo">
-            <!-- <img src="https://media.istockphoto.com/photos/close-up-portrait-of-brunette-woman-picture-id1154642632?b=1&k=20&m=1154642632&s=612x612&w=0&h=StstyxyDdiJQgUSTlaWv2ITXSMb029KzXijHtsaTQEg="> -->
-            <img src="../images/admin.png" />
+             <img src="https://media.istockphoto.com/id/1397556857/vector/avatar-13.jpg?s=612x612&w=0&k=20&c=n4kOY_OEVVIMkiCNOnFbCxM0yQBiKVea-ylQG62JErI=" alt="admin">
           </div>
           <div class="info">
             <p><b style="color: black">Hey, Admin</b></p>
@@ -64,6 +64,7 @@
             <h3>Logout</h3>
           </a>
         </div>
+        <!-- <i class="hamburger" class="fa-solid fa-bars">-</i> -->
       </aside>
       <!-- ------------------------Sidebar Ends Here----------------------- -->
       <!-- main section start -->
@@ -258,6 +259,12 @@
                   placeholder="Enter Email"
                 />
                 <input
+                  name="password"
+                  required="true"
+                  type="password"
+                  placeholder="Enter Password"
+                />
+                <input
                   name="phone"
                   required="true"
                   type="text"
@@ -275,22 +282,24 @@
                   type="text"
                   placeholder="Enter Role"
                 />
-                <input type="submit" value="SUBMIT" />
+                <input id="add" type="submit" value="SUBMIT" />
               </form>
             </div>
             <br>
             <div class="edit-doc">
               <div class="doc-search">
-                <h2>Update Trainer Details:</h2>
-                <input type="text" placeholder="Enter Trainer ID" />
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                <h2>Update Trainer</h2>
+                <input id="trainer" type="text" placeholder="Enter Trainer ID" />
+                <button onclick="gettrainers()">GET</button>
               </div>
-              <form>
-                <input type="text" placeholder="Enter Name" />
-                <input type="email" placeholder="Enter Email" />
-                <input type="text" placeholder="Enter Phone No." />
-                <input type="text" placeholder="Enter Country" />
-                <input type="submit" value="UPDATE" />
+              <br>
+              <form id="updateform">
+                <input name="name" type="text" placeholder="Enter Name" />
+                <input name="email" type="email" placeholder="Enter Email" />
+                <input name="phone" type="text" placeholder="Enter Phone No." />
+                <input name="country" type="text" placeholder="Enter Country" />
+                <input id="submit" onclick="updatetrainer(event)" type="submit" value="UPDATE" />
+                
               </form>
             </div>
           </div>

@@ -53,7 +53,7 @@ ordersRouter.post("/checkAvailablity", async (req,res)=>{
     // console.log(payload) 
     let classID = payload.classID;
     try{
-        let classes = await ClassesModel.findOne({_id:classID});
+        let classes = await ClassesModel.findById(classID);
         // console.log(classes,classID)
         if(classes.clients.includes(payload.userID)){            
             res.status(401).send({message:"You have already registered for this class"})
@@ -70,6 +70,28 @@ ordersRouter.post("/checkAvailablity", async (req,res)=>{
 })
 
 // Order creation
+// ordersRouter.post("/create", async (req,res)=>{
+//     let payload = req.body;
+//     payload.status=true;
+//     payload.createdDate=get_date();
+//     payload.createdTime=get_time();
+//     let classID = payload.classID;
+//     try{        
+//         let classes = await ClassesModel.findOne({_id:classID});
+//         let order = new OrdersModel(payload);
+//         await order.save();                
+//         await ClassesModel.findByIdAndUpdate({_id:classID},{seatOccupied:classes.seatOccupied+1,clients:[...classes.clients,payload.userID]}) // increment seats occupied
+//         let user = await UserModel.findOne({_id:payload.userID});
+//         let trainer = await UserModel.findOne({_id:classes.trainerID});
+//         await UserModel.findByIdAndUpdate({_id:payload.userID},{ $push: { classes: classes._id } });
+//        // mail sending
+//         mailOrderDetail(order,classes,user,trainer)
+//         res.status(200).send({message:"Congratulations! Order successful, Order Details shared on your email.",order})   
+//     }catch(error){
+//         res.status(400).send({message:"Something went wrong",error:error.message})
+//     }
+// })
+
 ordersRouter.post("/create", async (req,res)=>{
     let payload = req.body;
     payload.status=true;
@@ -77,13 +99,13 @@ ordersRouter.post("/create", async (req,res)=>{
     payload.createdTime=get_time();
     let classID = payload.classID;
     try{        
-        let classes = await ClassesModel.findOne({_id:classID});
+        let classes = await ClassesModel.findById(classID)
         let order = new OrdersModel(payload);
         await order.save();                
-        await ClassesModel.findByIdAndUpdate({_id:classID},{seatOccupied:classes.seatOccupied+1,clients:[...classes.clients,payload.userID]}) // increment seats occupied
-        let user = await UserModel.findOne({_id:payload.userID});
-        let trainer = await UserModel.findOne({_id:classes.trainerID});
-        await UserModel.findByIdAndUpdate({_id:payload.userID},{ $push: { classes: classes._id } });
+        await ClassesModel.findByIdAndUpdate(classID,{seatOccupied:classes.seatOccupied+1,clients:[...classes.clients,payload.userID]}) // increment seats occupied
+        let user = await UserModel.findById(payload.userID);
+        let trainer = await UserModel.findById(classes.trainerID);
+        await UserModel.findByIdAndUpdate(payload.userID,{ $push: { classes: classes._id } });
        // mail sending
         mailOrderDetail(order,classes,user,trainer)
         res.status(200).send({message:"Congratulations! Order successful, Order Details shared on your email.",order})   
@@ -101,8 +123,6 @@ ordersRouter.patch("/update/:id", async (req,res)=>{
         res.status(400).send({message:"Something went wrong",error:error.message})
     }
 })
-
-
 
 
 module.exports= {ordersRouter}
