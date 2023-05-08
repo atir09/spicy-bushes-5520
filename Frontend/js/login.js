@@ -60,7 +60,7 @@ google_button.addEventListener("click", async () => {
 
           
                setTimeout(() => {
-                window.location.href = "https://golden-custard-5c1d99.netlify.app/"
+                window.location.href = "https://cute-praline-7c3192.netlify.app/"
             }, 2000)
          
            
