@@ -23,7 +23,7 @@ window.onscroll = () => {
 	navbar.classList.remove('active');
 };
 
-
+document.getElementById("user_name").innerText=loggedInUser.name
 
 // ................................................Create Class Form...................................................................
 

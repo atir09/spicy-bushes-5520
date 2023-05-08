@@ -27,7 +27,7 @@ window.onscroll = () => {
 };
 
 
-
+document.getElementById("user_name").innerText=loggedInUser.name
 // ................................................Create Class Form...................................................................
 
 
