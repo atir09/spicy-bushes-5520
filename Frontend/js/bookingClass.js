@@ -11,6 +11,8 @@ if(!loggedInUser){
 }
 let loggedInUserEmail = loggedInUser.email;
 let orderDetailObj={};
+// console.log("log",loggedInUser._id)
+
 
 let form = document.querySelector("form");
 let checkAvailablity_btn = document.querySelector(".checkAvailablity_btn");
@@ -26,7 +28,7 @@ const classId = urlParams.get("id");
 getClass(classId)
 async function getClass(classId){
     try {
-        let res = await fetch(`${baseURL}/class/${classId}`,{
+        let res = await fetch(`${baseURL}class/${classId}`,{
             method:"GET",
             headers: {
               authorization:`Bearer ${loggedInUserEmail}`
@@ -35,13 +37,14 @@ async function getClass(classId){
         let data = await res.json();
         if(res.status==400){
             swal({text: data.message, icon: "error", button: "ok", timer:1000})
-            console.log(data.error);
-        }else{    
+            // console.log(data.error);
+        }else{   
+          // console.log(data) 
             displayDataInForm(data.classes);        
         }
     } catch (error) {     
         swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
-        console.log(error.message)
+        // console.log(error.message)
     }
 }
 
@@ -73,16 +76,18 @@ form.addEventListener("submit",(e)=>{
     let obj = {
         price: form.price.value,  
         selectedDate_Time:form.date_time.value,
-        classID:classId
+        classID:classId,
+        userID:loggedInUser._id
     }
+    // console.log(obj)
     checkAvailablity(obj);
 })
 
 
 async function checkAvailablity(obj){
-    // console.log(obj)
+    console.log(obj)
     try {
-        let url = baseURL+"/order/checkAvailablity"
+        let url = baseURL+"order/checkAvailablity"
         let res = await fetch(url,{ 
             method:"POST",
             headers: {

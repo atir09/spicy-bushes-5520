@@ -60,6 +60,7 @@ form.addEventListener("submit", (event) => {
     // alert("Please fill all the details");
     swal({text: "Please fill all the details", icon: "warning", button: "ok", timer:1000})
   } else {
+    
     orderClass(classDetailsForOrder);
   }
 
