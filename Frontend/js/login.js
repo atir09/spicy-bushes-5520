@@ -6,7 +6,7 @@ document.querySelector("#create-an-account").addEventListener("click",()=>{
 let google_button = document.querySelector("#login-google-button")
 
 google_button.addEventListener("click", async () => {
- window.location = "http://localhost:9876/auth/google"
+ window.location = "https://rich-plum-barracuda-fez.cyclic.app/auth/google"
   });
 
 
@@ -28,10 +28,14 @@ google_button.addEventListener("click", async () => {
     }
 
     if(payload.email == "admin@gmail.com" || payload.pass == "admin"){
-       
+      Swal.fire(
+        'Welcome Admin !!',
+        'You Loggged in',
+        'success'
+      )
       setTimeout(() => {
         window.location.href = "adminDashboard.html"
-    }, 2000)
+       }, 2000)
  
       }
   
@@ -46,18 +50,17 @@ google_button.addEventListener("click", async () => {
     }).then(res => res.json())
         .then(res => {
             console.log(res)
+            localStorage.setItem("email", res.email)
+            localStorage.setItem("isLogin", true)
             Swal.fire(
                 'Good job',
                 'You Loggged in',
                 'success'
               )
 
-              localStorage.setItem({
-                "email": email
-              })
-       
+          
                setTimeout(() => {
-                window.location.href = "index.html"
+                window.location.href = "https://golden-custard-5c1d99.netlify.app/"
             }, 2000)
          
            
