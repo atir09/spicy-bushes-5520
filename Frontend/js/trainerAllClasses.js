@@ -6,6 +6,8 @@ if(!loggedInUser){
 }
 let loggedInUserEmail = loggedInUser.email
 
+let loding_container=document.getElementById("loding_container")
+
 // .......................................Navbar........................................................
 
 
@@ -32,6 +34,7 @@ getAllClass();
 let newData;
 async function getAllClass() {
     try {
+        loding_container.style.display="block";
         let dataFetch = await fetch(baseURL + "/class/all", {
             headers: {
                 authorization: `Bearer ${loggedInUserEmail}`
@@ -40,16 +43,19 @@ async function getAllClass() {
         if (dataFetch.ok) {
             let temp = dataFetch.json()
                 .then(res => {
+                    loding_container.style.display="none";
                     newData = res.classes
                     console.log(newData)
                     renderAllData(res.classes)
                 })
         } else {
             // alert("Classes Not Fetched")
+            loding_container.style.display="none";
             swal({ text: "Classes Not Fetched", icon: "error", button: "ok", timer: 1000 })
         }
     } catch (error) {
         // alert("Server not responding");
+        loding_container.style.display="none";
         swal({ text: "Server not responding", icon: "error", button: "ok", timer: 1000 })
         console.log(error.message)
     }
