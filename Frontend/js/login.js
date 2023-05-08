@@ -40,7 +40,7 @@ google_button.addEventListener("click", async () => {
       }
   
     
-    fetch("https://rich-plum-barracuda-fez.cyclic.app/user/login", {
+    fetch("http://localhost:9876/user/login", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -50,8 +50,23 @@ google_button.addEventListener("click", async () => {
     }).then(res => res.json())
         .then(res => {
             console.log(res)
-            localStorage.setItem("email", res.email)
-            localStorage.setItem("isLogin", true)
+            if(res.OK == false){
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${res.message || res.error}`
+              })
+
+            setTimeout(() => {
+              window.location.href = "signup.html";
+            }, 4000)
+
+             
+              return;
+            }
+            sessionStorage.setItem("loggedInUser", JSON.stringify(res.user))
+            
+            
             Swal.fire(
                 'Good job',
                 'You Loggged in',
@@ -60,7 +75,12 @@ google_button.addEventListener("click", async () => {
 
           
                setTimeout(() => {
-                window.location.href = "https://cute-praline-7c3192.netlify.app/"
+                if(res.message == "Trainer Logged In"){
+                  window.location.href = "trainerDashboard.html"
+                } else {
+                  window.location.href = "userDashboard.html"
+                }
+                
             }, 2000)
          
            

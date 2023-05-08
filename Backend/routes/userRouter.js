@@ -86,7 +86,7 @@ userRouter.post("/login", async (req,res)=>{
     try{
         let user = await UserModel.findOne({email});
         if(!user){
-            res.status(400).send({error:"User not found, Kindly register"})
+            res.status(400).send({error:"User not found, Kindly register", "OK" :  false})
         }else{
             bcrypt.compare(password, user.password, async function(err, result) {
                 if(result){
@@ -95,18 +95,18 @@ userRouter.post("/login", async (req,res)=>{
                     await client.HSET("token",email,token)
                     await client.HSET("refresh_token",email,refresh_token)
                     if(user.role=="trainer"){
-                        res.status(200).send({message:"Trainer Logged In",token,refresh_token,user})
+                        res.status(200).send({message:"Trainer Logged In",token,refresh_token,user, "OK": true})
                     }else{
-                        res.status(200).send({message:"User Logged In",token,refresh_token,user})
+                        res.status(200).send({message:"User Logged In",token,refresh_token,user, "OK": true})
                     }
                 }else{
-                    res.status(401).send({error:"Incorrect Password, Kindly Login Again"});
+                    res.status(401).send({error:"Incorrect Password, Kindly Login Again", "OK": false});
                     console.log(err)
                 }
             });            
         }
     }catch(error){
-        res.status(400).send({message:"Something went wrong",error:error.message})
+        res.status(400).send({message:"Something went wrong",error:error.message, "OK": false})
         console.log(error)
     }
 })
