@@ -55,7 +55,7 @@ function renderAllData(data){
    
 <div class="information">
 <div class="second">
-    <img src=${renderImages(elem.title)} alt=${elem.title} class="classimages"></img>
+    <img src=${renderImages(elem.activity)} alt=${elem.activity} class="classimages"></img>
     <h4> <a href=./classDetails.html?id=${elem._id} >${elem.title}</a></h4>
     </div>
    <div class="third">
@@ -107,7 +107,7 @@ function searchalldata(event){
     let searchdata=event.target.value
     // console.log(newData)
    let temp=newData.filter(function(elem){
-    let ans=elem.locationOrLink.toLowerCase().includes(searchdata.toLowerCase())||elem.title.toLowerCase().includes(searchdata.toLowerCase())||elem.title.toLowerCase().includes(searchdata.toLowerCase())||elem.venue.toLowerCase().includes(searchdata.toLowerCase())
+    let ans=elem.locationOrLink.toLowerCase().includes(searchdata.toLowerCase())||elem.activity.toLowerCase().includes(searchdata.toLowerCase())||elem.activity.toLowerCase().includes(searchdata.toLowerCase())||elem.venue.toLowerCase().includes(searchdata.toLowerCase())
     return ans;
   })
 return temp;
