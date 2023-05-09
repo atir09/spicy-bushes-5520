@@ -1,7 +1,7 @@
 import baseURL from "./baseURL.js"
 let menu = document.querySelector('#menu-btn');
 let navbar = document.querySelector('.header .navbar');
-
+let loding_container=document.getElementById("loding_container")
 menu.onclick = () => {
 	menu.classList.toggle('fa-times');
 	navbar.classList.toggle('active');
@@ -22,6 +22,7 @@ let newData;
 async function getAllClass(){
     // console.log(baseURL+"/class/all")
     try{
+        loding_container.style.display="block";
      let dataFetch=await fetch(baseURL+"/class/all",{
         headers:{   
             authorization:`Bearer ${loggedInUserEmail}`
@@ -30,6 +31,7 @@ async function getAllClass(){
     if(dataFetch.ok){
         let temp=dataFetch.json()
         .then(res=>{
+            loding_container.style.display="none";
             newData=res.classes
             console.log(newData)
             renderAllData(res.classes)})
@@ -38,6 +40,7 @@ async function getAllClass(){
         swal({text: "Classes Not Fetched", icon: "error", button: "ok", timer:1000})
        }
        } catch (error) {
+        loding_container.style.display="none";
         // alert("Server not responding");
         swal({text: "Server not responding", icon: "error", button: "ok", timer:1000})
         console.log(error.message)
@@ -107,7 +110,7 @@ function searchalldata(event){
     let searchdata=event.target.value
     // console.log(newData)
    let temp=newData.filter(function(elem){
-    let ans=elem.locationOrLink.toLowerCase().includes(searchdata.toLowerCase())||elem.title.toLowerCase().includes(searchdata.toLowerCase())||elem.title.toLowerCase().includes(searchdata.toLowerCase())||elem.venue.toLowerCase().includes(searchdata.toLowerCase())
+    let ans=elem.locationOrLink.toLowerCase().includes(searchdata.toLowerCase())||elem.activity.toLowerCase().includes(searchdata.toLowerCase())||elem.activity.toLowerCase().includes(searchdata.toLowerCase())||elem.venue.toLowerCase().includes(searchdata.toLowerCase())
     return ans;
   })
 return temp;
