@@ -1,7 +1,9 @@
 ## ABOUT THE PROJECT
 <h1> GO FIT </h1>
 <div align="center"  width="55" height="55">
-  <img src="Frontend/imgs/logo/logo.png" alt="html" width="140" height="100"/>
+  <img src="Frontend/imgs/logo/logo.png" alt="html" width="200" height="100"/>
+  <br>
+  <br>
   <p>Welcome to Go Fit, the ultimate sports and wellness app designed to help users and certified fitness trainers to get together and work on the fitness goal on one platform.</p>
   <br>
   <p>Our system provides a user-friendly platform that enables users to browse, book, and cancel fitness classes with ease. Our platform empowers trainers to create classes with comprehensive information such as class time, venue, date, and more. Additionally, all-encompassing administrative interface that enables authorized personnel to perform a wide range of operations, including Create, Read, Update, and Delete (CRUD) functions. </p>
@@ -130,16 +132,29 @@ GET /user/singletrainer/:id
 | :------------------: | 
 
  <div align = "center">
-
-  
+   <h2>Landing Page</h2>
+   <img width="956" alt="Landing_Page" src="https://github.com/atir09/spicy-bushes-5520/assets/112818778/098025e5-c6b6-418d-bfde-fa6278b8b19a">
+   <br>
+   <h2>Client Dashboard</h2>
+   <img width="960" alt="User_Dashboard" src="https://github.com/atir09/spicy-bushes-5520/assets/112818778/37736d87-5301-4fb4-be8f-0edc31b2895e">
+   <br>
+   <h2>Trainer Dashboard</h2>
+   <img width="958" alt="Trainer_Dashboard" src="https://github.com/atir09/spicy-bushes-5520/assets/112818778/e9a50223-99e3-493b-a72d-089a9c6775c4">
+   <br>
+   <h2>Class Information</h2>
+   <img width="960" alt="Class_Information" src="https://github.com/atir09/spicy-bushes-5520/assets/112818778/f656b37b-7fdb-441a-a79e-1d256819c740">
+   <br>
+   <h2>Admin Dashboard</h2>
+   <img width="938" alt="Admin_Dashboard" src="https://github.com/atir09/spicy-bushes-5520/assets/112818778/3673f256-bb5b-4cfc-a82e-35f1137c2282">
+   <br>
 <div/>
-  
+  <br>
 
 | `Demo` |
 | :----: | 
    
 
-[FRONTEND]
+[FRONTEND](https://go-fit.netlify.app/)
 
 [BACKEND](https://rich-plum-barracuda-fez.cyclic.app/)
 
