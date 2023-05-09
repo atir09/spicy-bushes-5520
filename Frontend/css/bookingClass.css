@@ -65,7 +65,7 @@ body {
 /* LOGO */
 
 .logo img {
-  width: 60px;
+  width: 7rem;
   margin-left: 20px;
 }
 
@@ -73,7 +73,7 @@ body {
 
 .menu {
   display: flex;
-  gap: 1em;
+  gap: 3rem;
   font-size: 18px;
 }
 

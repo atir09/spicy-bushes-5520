@@ -13,9 +13,22 @@ window.onscroll = () => {
 };
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if(!loggedInUser){    
-    window.location.assign("/Frontend/html/login.html");
+    window.location.href="../index.html"
 }
 let loggedInUserEmail = loggedInUser.email;
+
+//  Displaying Username In Navbar
+
+let user_name=document.getElementById("user_name");
+
+user_name.innerText=loggedInUser.name;
+
+function logoutFun(){
+    sessionStorage.clear();
+    window.location.href="../index.html"
+}
+
+
 
 getAllClass();
 let newData;
@@ -202,11 +215,3 @@ function getRandomItem(arr) {
 }
 
 // showing user's name on nav bar
-let user_name=document.getElementById("user_name");
-
-user_name.innerText=loggedInUser.name;
-
-function logoutFun(){
-    sessionStorage.clear();
-    window.location.href="../index.html"
-}

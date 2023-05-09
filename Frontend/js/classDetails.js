@@ -2,21 +2,26 @@ const baseURL="https://rich-plum-barracuda-fez.cyclic.app"
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if(!loggedInUser){    
-    window.location.assign("../html/login.html");
+    window.location.href="../index.html"
 }
 let loggedInUserEmail = loggedInUser.email;
 
 const urlParams = new URLSearchParams(window.location.search)
 const classId = urlParams.get("id")
 
-// .....................................................................................................
-
-// const classId="645514f72272571e775560e4"
-// const loggedInUserEmail="ucannotseeme09@gmail.com"
 
 // .....................................................................................................
 
 
+// showing user's name on nav bar
+let user_name=document.getElementById("user_name");
+
+user_name.innerText=loggedInUser.name;
+
+function logoutFun(){
+    sessionStorage.clear();
+    window.location.href="../index.html"
+}
 
 
 // .......................................Navbar........................................................
@@ -265,17 +270,3 @@ async function DeleteClass(classid){
 }
 
 
-function logoutFun(){
-    sessionStorage.clear();
-    window.location.assign("../index.html")
-}
-
-// showing user's name on nav bar
-let user_name=document.getElementById("user_name");
-
-user_name.innerText=loggedInUser.name;
-
-function logoutFun(){
-    sessionStorage.clear();
-    window.location.href="../index.html"
-}

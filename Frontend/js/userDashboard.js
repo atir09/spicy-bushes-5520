@@ -15,7 +15,7 @@ window.onscroll = () => {
 
 let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 if (!loggedInUser) {
-    window.location.assign("/Frontend/html/login.html");
+    window.location.href="../index.html"
 }
 let loggedInUserEmail = loggedInUser.email;
 console.log(loggedInUser)

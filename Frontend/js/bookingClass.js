@@ -4,15 +4,24 @@ let loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"))
 let loding_container=document.getElementById("loding_container")
 let logoimg_nav=document.getElementById("logoimg_nav")
 logoimg_nav.addEventListener("click",()=>{
-    window.location.assign("/Frontend/html/userDashboard.html");
-    // console.log("yes")
+    window.location.assign("./userDashboard.html");
 })
 if(!loggedInUser){    
-    window.location.assign("/frontend/pages/login.html");
+  window.location.href="../index.html"
 }
 let loggedInUserEmail = loggedInUser.email;
 let orderDetailObj={};
-// console.log("log",loggedInUser._id)
+
+// showing user's name on nav bar
+let user_name=document.getElementById("user_name");
+
+user_name.innerText=loggedInUser.name;
+
+function logoutFun(){
+    sessionStorage.clear();
+    window.location.href="../index.html"
+}
+
 
 
 let form = document.querySelector("form");
@@ -130,7 +139,7 @@ async function checkAvailablity(obj){
 next_btn.addEventListener("click",(e)=>{
     // console.log(orderDetailObj)
     sessionStorage.setItem("classDetailsForOrder",JSON.stringify(orderDetailObj));    
-    window.location.assign("/Frontend/html/payment.html");
+    window.location.assign("./payment.html");
 })
 
 
@@ -199,4 +208,5 @@ function getRandomItem(arr) {
    let item = arr[randomIndex];
   return item;
 }
+
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,31 +16,33 @@
     <title>Go-Fit | Search Classes</title>
     <link rel="icon" href="../imgs/logo/logo.png" />
 </head>
+
 <body>
     <div id="loding_container">
         <div id="loding_div">
-          <img src="../imgs/loding.gif" alt="" srcset="">
-          <h2>Please Wait...</h2>
+            <img src="../imgs/loding.gif" alt="" srcset="">
+            <h2>Please Wait...</h2>
         </div>
-      </div>
     
+    </div>
+
     <div id="middlediv">
-       
+
         <header class="header">
 
             <a href="#" class="logo"> <img src="../imgs/logo.png" alt="logo"></a>
-      
-              <div id="menu-btn" class="fas fa-bars"></div>
-      
-              <nav class="navbar">
-                  <a href="./userDashboard.html" id="user_name"></a>
-                  <a href="#about">about</a>
-                  <a href="./userSearchClass.html">Classes</a>
-                  <a href="../index.html" onclick="logoutFun()">Log out</a>
-              </nav>
-      
-          </header>
-        
+
+            <div id="menu-btn" class="fas fa-bars"></div>
+
+            <nav class="navbar">
+                <a href="./userDashboard.html" id="user_name"></a>
+                <a href="./userDashboard.html">My Classses</a>
+                <a href="./userSearchClass.html">Class Search</a>
+                <a href="../index.html" onclick="logoutFun()">Log out</a>
+            </nav>
+
+        </header>
+
         <div id="searchclass">
             <div id="filterinfo">
 
@@ -81,38 +84,39 @@
                         <option value="high">High to Low</option>
                     </select>
                 </div>
-    
+
             </div>
             <div id="searchdiv">
                 <div id="mainsearchdiv">
                     <p>Tell us what you're looking for</p>
                     <input type="text" placeholder="Search for class here..." id="searchBox">
-                    
+
                 </div>
                 <button id="mainsearchbutton">SEARCH</button>
             </div>
         </div>
 
-        
+
 
         <div id="allclassediv">
             <h3 id="allclasstitle">All Classes</h3>
 
             <div id="cardcontainer">
-                
-               
+
+
             </div>
-            
+
         </div>
-        
+
 
     </div>
-   
+
 </body>
-<script type="module"  src="../js/userSearchClass.js"></script>
+<script type="module" src="../js/userSearchClass.js"></script>
+
 </html>
 <script>
-    function logoutFun(){
-    sessionStorage.clear();
-}
+    function logoutFun() {
+        sessionStorage.clear();
+    }
 </script>
