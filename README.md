@@ -125,11 +125,6 @@ GET /user/singletrainer/:id
    
 <div align = "center">  
   
-
-  
-| `DB Workflow` |
-| :-----------: | 
-
   
 | `Project Highlights` |
 | :------------------: | 
